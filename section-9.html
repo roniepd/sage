@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:52-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Rotacional e Divergente</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-8.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-10.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-8.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-10.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link active">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-9"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span>
+</h2>
+<section class="subsection" id="subsection-14"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">9.1</span> <span class="title">Introdução</span>
+</h3>
+<p id="p-190">O vídeo abaixo apresenta uma  noção intuitíva do significado de rotacional  (curl) e do divergente (divergence) <div class="video-box" style="width: 100%;padding-top: 56.25%; margin-left: 0%; margin-right: 0%;"><iframe id="video-1" class="video" allowfullscreen="" src="https://www.youtube-nocookie.com/embed/rB83DpBJQsE?&amp;modestbranding=1&amp;rel=0"></iframe></div> <em class="emphasis">Fonte:  3blue1brown on youtube.</em></p></section><section class="subsection" id="subsection-15"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">9.2</span> <span class="title">O Rotacional</span>
+</h3>
+<p id="p-191">Se \(\vec{F}(x,y,z)=P(x,y,z)\vec{i}+Q(x,y,z)\vec{j}+R(x,y,z)\vec{k}\) é um campo vetorial em \(\mathbb{R}^3\) e as derivadas parciais de \(P, Q\) e \(R\) existem, então o <em class="alert">rotacional</em><a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-20" id="fn-20"><sup> 1 </sup></a> de \(\vec{F}\) é o campo vetorial em \(\mathbb{R}^3\) definido por</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{rot} \vec{F} = \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)\vec{i} + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)\vec{j} + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\vec{k}.
+\end{equation*}
+</div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-20"><div class="fn">em inglês é chamado <em class="alert">curl</em>.</div></div>
+<p id="p-192">O rotacional dá uma medida da rotação gerada nas partículas pelo campo vetorial. Um objeto no espaço pode girar, simultaneamente,  em até três planos distintos. Se \(\vec{F}\) é o campo de velocidades de um fluído, as funções componentes do rotacional dão uma medida de quanto uma partícula está girando  nos planos perpendiculares aos vetores \(\vec{i}, \vec{j}\) e \(\vec{k}\text{,}\) respectivamente.</p>
+<p id="p-193">Denotando</p>
+<div class="displaymath">
+\begin{equation*}
+\nabla = \frac{\partial}{\partial x}\vec{i} + \frac{\partial}{\partial y}\vec{j} + \frac{\partial}{\partial z}\vec{k},
+\end{equation*}
+</div>
+<p class="continuation">para o operador que associa o <em class="alert">gradiente</em> à uma função diferenciável de três variáveis através de</p>
+<div class="displaymath">
+\begin{equation*}
+\nabla f= \frac{\partial f}{\partial x}\vec{i} + \frac{\partial f}{\partial y}\vec{j} + \frac{\partial f}{\partial z}\vec{k},
+\end{equation*}
+</div>
+<p id="p-194">temos uma regra mnemônica para o rotacional do campo \(\vec{F}(x,y,z) = P(x,y,z) \vec{i} + Q(x,y,z)\vec{j} + R(x,y,z)\vec{k}\text{:}\)</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{rot} \vec{F} = \nabla \times \vec{F} = \left| \begin{array}{ccc}\vec{i} &amp;  \vec{j} &amp; \vec{k} \\ \frac{\partial}{\partial x} &amp; \frac{\partial}{\partial y} &amp; \frac{\partial}{\partial z}\\ P(x,y,z) &amp; Q(x,y,z) &amp; R(x,y,z) \end{array}\right|.
+\end{equation*}
+</div>
+<article class="example example-like" id="ex_cons"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex_cons"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">9.1</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex_cons"><article class="example example-like"><p id="p-195">Se \(\vec{F}(x,y,z)=2xz \vec{i} + z^2\vec{j}-xy\vec{k}\text{,}\) então</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{rot} \vec{F} = \left| \begin{array}{ccc}\vec{i} &amp;  \vec{j} &amp; \vec{k} \\ \frac{\partial}{\partial x} &amp; \frac{\partial}{\partial y} &amp; \frac{\partial}{\partial z}\\ 2xz &amp; z^2 &amp; -xy \end{array}\right|=\left(-x-2z\right) \vec{i} + \left(2x+y\right)\vec{j}.
+\end{equation*}
+</div></article></div>
+<article class="remark remark-like" id="remark-26"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">9.2</span><span class="period">.</span>
+</h6>Se \(\mbox{rot} \vec{F} (x,y,z)=0\) para todo \((x,y,z)\) no domínio de \(\vec{F}\text{,}\) então \(\vec{F}\) é dito <dfn class="terminology">irrotacional</dfn>.</article><article class="theorem theorem-like" id="Teorema_rot_grad"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">9.3</span><span class="period">.</span>
+</h6>
+<p id="p-196">Se \(f: E\subset \mathbb{R}^3 \to \mathbb{R}\) é uma função de classe \(C^2\) em uma região aberta \(E\text{,}\) então</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{rot}(\nabla f) = 0.
+\end{equation*}
+</div></article><article class="hiddenproof" id="proof-12"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-12"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-12"><article class="hiddenproof"><div class="displaymath" id="p-197">
+\begin{align*}
+\mbox{rot} \nabla\vec{F} =\amp \left| \begin{array}{ccc}\vec{i} &amp;  \vec{j} &amp; \vec{k} \\ \frac{\partial}{\partial x} &amp; \frac{\partial}{\partial y} &amp; \frac{\partial}{\partial z}\\ \frac{\partial f}{\partial x} &amp; \frac{\partial f}{\partial y} &amp; \frac{\partial f}{\partial z} \end{array}\right|\\
+=\amp\left(\frac{\partial^2 f}{\partial y\partial z}-\frac{\partial^2 f}{\partial z\partial y}\right) \vec{i} + \left(\frac{\partial^2 f}{\partial z\partial x}-\frac{\partial^2 f}{\partial x\partial z}\right)\vec{j}+\left(\frac{\partial^2 f}{\partial x\partial y}-\frac{\partial^2 f}{\partial y\partial x}\right)\vec{k} \\
+=\amp 0,
+\end{align*}
+</div>
+<p class="continuation">onde utilizamos o Teorema de Clairaut<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-21" id="fn-21"><sup> 2 </sup></a> na última igualdade.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-21"><div class="fn">Se \(f(x,y)\) é uma função de classe \(C^2\) em uma região aberta, então \(f_{xy} = f_{yx}\) nessa região.</div></div></article></div>
+<article class="remark remark-like" id="remark-27"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">9.4</span><span class="period">.</span>
+</h6>Se \(\vec{F}\) é um campo conservativo, isto é, \(\vec{F}=\nabla f\text{,}\) e suas funções componentes são de classe \(C^1\text{,}\) então \(\mbox{rot}\vec{F} = \mbox{rot}(\nabla f) = 0\text{.}\) Isso nos dá um critério para verificarmos se um campo vetorial é conservativo: <em class="alert">se as funções componentes do campo são de classe \(C^1\) e \(\mbox{rot}\vec{F} \neq 0\) então o campo \(\vec{F}\) não é conservativo</em>.</article><article class="example example-like" id="example-19"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-19"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">9.5</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-19"><article class="example example-like"><p id="p-198">O campo do <a class="xref" data-knowl="./knowl/ex_cons.html" title="Exemplo 9.1">Exemplo 9.1</a> tem funções componentes de classe \(C^1\) e seu rotacional não é nulo, portanto o campo não é conservativo.</p></article></div>
+<article class="theorem theorem-like" id="Teorema_rot_cons"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">9.6</span><span class="period">.</span>
+</h6>
+<p id="p-199">Se \(\vec{F}: E\subset \mathbb{R}^3 \to \mathbb{R}\text{,}\) \(\vec{F} (x,y,z)= P(x,y,z)\vec{i} + Q(x,y,z)\vec{j} +R(x,y,z)\vec{k}  \text{,}\) é um campo vetorial sobre uma região simplesmente conexa, suas funções componentes são de classe \(C^1\) e \(\mbox{rot} \vec{F}=0\text{,}\) então \(\vec{F}\) é conservativo.</p></article><article class="hiddenproof" id="proof-13"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-13"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-13"><article class="hiddenproof"><p id="p-200">É possível mostrar, utilizando o Teorema de Stokes<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-22" id="fn-22"><sup> 3 </sup></a>, que nas condições do teorema a integral de linha de \(\vec{F}\) sobre uma curva ligando os pontos \(A\) e \(B\) não depende da curva, mas apenas do ponto final e inicial. Utilizando isso, é possível mostrar que uma função potencial é</p>
+<div class="displaymath">
+\begin{equation*}
+f(x,y,z) = \int_{(x_0,y_0,z_0)}^{(x,y,z)}\vec{F} \cdot d\vec{r},
+\end{equation*}
+</div>
+<p class="continuation">onde \((x_0,y_0,z_0)\) é um ponto fixo qualquer em \(E\) e a integral  é calculada sobre qualquer curva ligando os pontos \((x_0,y_0,z_0)\) e \((x,y,z)\text{.}\)</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-22"><div class="fn">que será apresentado mais adiante</div></div></article></div>
+<article class="example example-like" id="Ex_funcao_potencial"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-Ex_funcao_potencial"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">9.7</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-Ex_funcao_potencial"><article class="example example-like"><p id="p-201">O campo \(\vec{F}(x,y,z)=y^2z^3 \vec{i} + 2xyz^3\vec{j} +3xy^2z^2\vec{k}\) é irrotacional pois</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{rot} \vec{F} = \left(6xyz^2-6xyz^2\right) \vec{i} + \left(3y^2z^2-3y^2z^2\right)\vec{j}+ \left(2yz^3-2yz^3\right)\vec{k} = 0.
+\end{equation*}
+</div>
+<p class="continuation">Além disso, suas funções componentes são de classe \(C^1\text{.}\)</p>
+<p id="p-202">O <a class="xref" data-knowl="./knowl/Teorema_rot_cons.html" title="Teorema 9.6">Teorema 9.6</a> garante, então, que existe uma função potencial \(f(x,y,z)\) para o campo \(\vec{F}\text{,}\) com \(\vec{F}=\nabla f(x,y,z) = (f_x, f_y, f_z)\text{.}\) Podemos encontrar a função potencial igualando as componentes:</p>
+<div class="displaymath">
+\begin{gather*}
+f_x = y^2z^3 \Rightarrow  f(x,y,z) = xy^2z^3 + g(y,z),\\
+2xyz^3 + g_y = f_y = 2xyz^3 \Rightarrow  g_y=0 \Rightarrow g(y,z) = h(z),\\
+3xy^2z^2 + h_z = f_z= 3xy^2z^2 \Rightarrow  h_z=0 \Rightarrow h(z) = K \in \mathbb{R}.
+\end{gather*}
+</div>
+<p class="continuation">Assim obtemos que qualquer função potencial do campo deve satisfazer \(f(x,y,z)=xy^2z^3 + K\text{,}\) para algum \(K\in \mathbb{R}\text{,}\) a qual verifica-se ser  uma função potencial para o campo \(\vec{F}\) imediatamente.</p></article></div>
+<article class="exercise exercise-like" id="exercise-32"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-32"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">9.8</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-32"><article class="exercise exercise-like"><p id="p-203">Verifique, para cada campo abaixo, o campo têm rotacional nulo e diga se suas funções componentes têm derivadas contínuas na região limitada pela esfera de raio 1 centrada na origem. Caso tenha, utilize o método do <a class="xref" data-knowl="./knowl/Ex_funcao_potencial.html" title="Exemplo 9.7">Exemplo 9.7</a> para determinar uma função potencial. Em seguida compare resposta com a função candidata do código abaixo e justifique o resultado do código em comparação com o seu:</p>
+<ol class="decimal">
+<li id="li-35"><p id="p-derived-li-35">\(\displaystyle \vec{F}(x,y,z)=\mbox{sen}(x)\vec{i} + \mbox{cos}(y)\vec{j} + \mbox{senh}(z)\vec{k};\)</p></li>
+<li id="li-36"><p id="p-derived-li-36">\(\displaystyle \vec{F}(x,y,z)=\mbox{sen}(y)\vec{i} + \mbox{cos}(z)\vec{j} + \mbox{senh}(x)\vec{k};\)</p></li>
+<li id="li-37"><p id="p-derived-li-37">\(\displaystyle \vec{F}(x,y,z)=\frac{1}{x+y+z}\vec{i} + \frac{1}{x+y+z}\vec{j} + \frac{1}{x+y+z}\vec{k};\)</p></li>
+<li id="li-38"><p id="p-derived-li-38">\(\displaystyle \vec{F}(x,y,z)=\frac{y}{1-(x^2+y^2)}\vec{i} + \frac{x}{1-(x^2+y^2)}\vec{j} + (z^2-3z)\vec{k}.\)</p></li>
+</ol></article></div>
+<p id="p-204">O código abaixo pode ser utilizado para encontrar uma função candidata à função potencial de um campo.</p>
+<div class="sagecell-sage" id="sage-43"><script type="text/x-sage">var('x y z')
+F(x,y,z)=(-z*sin(x+2*y),-2*z*sin(x+2*y), cos(x+2*y))
+Py = diff(F[0],y,1).full_simplify()
+Pz = diff(F[0],z,1).full_simplify()
+Qx = diff(F[1],x,1).full_simplify()
+Qz = diff(F[1],z,1).full_simplify()
+Rx = diff(F[2],x,1).full_simplify()
+Ry = diff(F[2],y,1).full_simplify()
+if Ry != Qz or Pz != Rx or Qx != Py:
+    print('O campo não é conservativo')
+else:
+    from sage.symbolic.integration.integral import indefinite_integral
+    f = F[0].integral(x)
+    g= F[1] - diff(f,y,1)
+    f= f + g.integral(y) 
+    h= F[2] - diff(f,z,1)
+    f=f+h.integral(z)  
+    print('A função abaixo é uma candidata à função potencial:')
+    print(f)
+</script></div></section><section class="subsection" id="subsection-16"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">9.3</span> <span class="title">O Divergente</span>
+</h3>
+<p id="p-205">O <em class="alert">divergente</em> de um campo vetorial \(\vec{F}(x,y,z)=P(x,y,z)\vec{i}+Q(x,y,z)\vec{j}+R(x,y,z)\vec{k}\) é a função real de três variáveis definida por</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{div} \vec{F} := \nabla \cdot \vec{F} = \frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z},
+\end{equation*}
+</div>
+<p class="continuation">se as derivadas parciais existirem.</p>
+<article class="remark remark-like" id="remark-28"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">9.9</span><span class="period">.</span>
+</h6>Se \(\vec{F}\) é o campo de velocidades de um fluído, o divergente mede quanto a densidade do fluído está variando em um ponto. Se \(\mbox{div} \vec{F} = 0\text{,}\) então \(\vec{F}\) é dito <em class="alert">incompressível</em>.</article><article class="exercise exercise-like" id="exercise-33"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-33"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">9.10</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-33"><article class="exercise exercise-like"><p id="p-206">Calcule o divergente dos campos abaixo:</p>
+<ol class="decimal">
+<li id="li-39"><p id="p-derived-li-39">\(\displaystyle \vec{F}(x,y,z)=\mbox{sen}(x)\vec{i} + \mbox{cos}(y)\vec{j} + \mbox{senh}(z)\vec{k};\)</p></li>
+<li id="li-40"><p id="p-derived-li-40">\(\displaystyle \vec{F}(x,y,z)=\mbox{sen}(y)\vec{i} + \mbox{cos}(z)\vec{j} + \mbox{senh}(x)\vec{k};\)</p></li>
+<li id="li-41"><p id="p-derived-li-41">\(\displaystyle \vec{F}(x,y,z)=\frac{1}{x+y+z}\vec{i} + \frac{1}{x+y+z}\vec{j} + \frac{1}{x+y+z}\vec{k};\)</p></li>
+<li id="li-42"><p id="p-derived-li-42">\(\displaystyle \vec{F}(x,y,z)=\frac{y}{1-(x^2+y^2)}\vec{i} + \frac{x}{1-(x^2+y^2)}\vec{j} + (z^2-3z)\vec{k}.\)</p></li>
+</ol></article></div>
+<p id="p-207">O código abaixo pode ser utilizado para calcular o divergente de um campo vetorial.</p>
+<div class="sagecell-sage" id="sage-44"><script type="text/x-sage">var('x y z')
+F(x,y)=(-z*sin(x+2*y),-2*z*sin(x+2*y), cos(x+2*y))
+div=diff(F[0],x,1)+diff(F[1],y,1)+diff(F[2],z,1)
+div
+</script></div>
+<article class="theorem theorem-like" id="Teo_div_rot"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">9.11</span><span class="period">.</span>
+</h6>
+<p id="p-208">Se \(\vec{F} (x,y,z)= P(x,y,z)\vec{i} + Q(x,y,z)\vec{j} +R(x,y,z)\vec{k}  \) é um campo cujas funções componentes são de classe \(C^2\text{,}\) então:</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{div}( \mbox{rot} \vec{F}) = 0.
+\end{equation*}
+</div></article><article class="hiddenproof" id="proof-14"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-14"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-14"><article class="hiddenproof"><div class="displaymath">
+\begin{align*}
+\mbox{div} (\mbox{rot} \nabla\vec{F}) =\amp \mbox{div}\left(\left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)\vec{i} + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)\vec{j} + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\vec{k}\right)\\
+=\amp \frac{\partial^2 R}{\partial x\partial y} - \frac{\partial^2 Q}{\partial x\partial z} + \frac{\partial^2 P}{\partial y\partial z} - \frac{\partial^2 R}{\partial y\partial x} + \frac{\partial^2 Q}{\partial z\partial x} - \frac{\partial^2 P}{\partial z\partial y} = 0,
+\end{align*}
+</div>pelo Teorema de Clairaut<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-23" id="fn-23"><sup> 4 </sup></a>.</article></div>
+<article class="remark remark-like" id="remark-29"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">9.12</span><span class="period">.</span>
+</h6>O <a class="xref" data-knowl="./knowl/Teo_div_rot.html" title="Teorema 9.11">Teorema 9.11</a> nos dá um critério para verificarmos se um campo vetorial é o rotacional de outro campo: <em class="alert">se as funções componentes do campo são de classe \(C^2\) e \(\mbox{div}\vec{F} \neq 0\) então não existe um campo \(\vec{G}\) tal que \(\vec{F} = \mbox{rot} \vec{G}\)</em>.</article></section><section class="subsection" id="subsection-17"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">9.4</span> <span class="title">O Operador de Laplace</span>
+</h3>
+<p id="p-209">Denotamos</p>
+<div class="displaymath">
+\begin{equation*}
+\Delta = \nabla \cdot \nabla =\nabla^2,
+\end{equation*}
+</div>
+<p class="continuation">para o operador de Laplace, que é definido para um campo escalar \(f:E \subset \mathbb{R}^3 \to \mathbb{R}\) como</p>
+<div class="displaymath">
+\begin{equation*}
+\Delta f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}.
+\end{equation*}
+</div>
+<p id="p-210">Este operador tem muitas aplicações e está relacionado com o comportamento de ondas, a difusão do calor e o movimento de fluídos.</p>
+<p id="p-211">O gráfico de uma função de duas variáveis em cinza <div class="sagecell-sage" id="sage-45"><script type="text/x-sage">var('x y')
+f(x,y)=e^(1/(1+sqrt(x^2+y^2)))*cos(sqrt(x^2+y^2))
+plot3d(f,(x,-3,3),(y,-3,3), frame=False, color='gray', opacity=1)
+</script></div> e da região do plano abaixo dele colorida conforme a magnitude do laplaciano <div class="sagecell-sage" id="sage-46"><script type="text/x-sage">var('x y')
+f(x,y)=e^(1/(1+sqrt(x^2+y^2)))*cos(sqrt(x^2+y^2))
+L=f.diff(x,2)+f.diff(y,2)
+contour_plot(L, (-3,3), (-3,3), cmap='Blues')
+</script></div></p></section></section></div></main>
+</div>
+</body>
+</html>

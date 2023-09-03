@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:51-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Derivadas e integrais de funções vetoriais.</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-1.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-3.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-1.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-3.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link active">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-2"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span>
+</h2>
+<section class="subsection" id="subsection-1"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">2.1</span> <span class="title">Derivadas de funções vetoriais.</span>
+</h3>
+<p id="p-30">As derivadas de funções vetoriais têm aplicações muito importantes. Uma das mais destacadas na física é a velocidade vetorial. Se \(\vec{r}(t)\) representa a posição, em metros, de um objeto no espaço a cada instante \(t\text{,}\) em segundos; então a derivada \(\vec{r}'(t)\) é o vetor velocidade do objeto no instante \(t\) em metros por segundo.</p>
+<article class="definition definition-like" id="definition-3"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">2.1</span><span class="period">.</span>
+</h6>
+<p id="p-31">A <em class="emphasis">derivada</em> \(\vec{r}'\text{,}\) de uma função vetorial \(\vec{r}:I \to \mathbb{R}^3\text{,}\)  em \(t \in I\text{,}\) é definida como:</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}'(t) = \frac{dr}{dt}(t) = \lim_{\Delta t \to 0} \frac{r(t+\Delta t)-r(t)}{\Delta t},
+\end{equation*}
+</div>
+<p class="continuation">se o limite existir.</p></article><p id="p-32">O gráfico abaixo ilustra uma curva e os vetores do quociente \(\frac{r(t+\Delta t)-r(t)}{\Delta t}\) para \(\Delta t\) igual a 1; 0.5 e 0.1. Quanto menor for \(\Delta t\text{,}\) mais nos aproximamos da taxa de variação instantânea da posição.</p>
+<div class="sagecell-sage" id="sage-4"><script type="text/x-sage">var('t');
+r(t)=((t/4)^2, sin(pi*(t/4)), -(t/4)^4)
+t0=0.5
+S = parametric_plot3d(r(t), (t,-4,4))
+P1=arrow(r(t0),r(t0)+(r(t0+1)-r(t0))/(1),color=hue(0.2),width=0.2)
+P2=arrow(r(t0),r(t0)+(r(t0+0.5)-r(t0))/(0.5),color=hue(0.4),width=0.2)
+P3=arrow(r(t0),r(t0)+(r(t0+0.1)-r(t0))/(0.1),color=hue(0.6),width=0.2)
+print(P1+P2+P3+S)
+P1+P2+P3+S
+</script></div>
+<p id="p-33">Se \(\vec{r}(t)\) descreve a trajetória de um ponto, dizemos que \(\vec{r}'(t)\) é a <em class="emphasis">velocidade</em> (vetorial).</p>
+<article class="theorem theorem-like" id="Teorema_Derivada_Vetorial"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">2.2</span><span class="period">.</span>
+</h6>
+<p id="p-34">Se \(f\text{,}\) \(g\) e \(h\) são funções diferenciáveis em \(t\) e  \(\vec{r}(t) = (f(t),g(t),h(t))\text{,}\) então \(\vec{r}\) tem derivada em \(t\) e</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}'(t) = (f'(t),g'(t),h'(t)).
+\end{equation*}
+</div></article><article class="hiddenproof" id="proof-2"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-2"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-2"><article class="hiddenproof"><p id="p-35">A equação pode ser calculada diretamente das definições das operações:</p>
+<div class="displaymath">
+\begin{align*}
+\frac{d\vec{r}}{dt}=\amp \lim_{\Delta t\to 0} \frac{\vec{r}(t+\Delta t)-\vec{r}(t)}{\Delta t} \\
+=\amp \lim_{\Delta t\to 0} \frac{1}{\Delta t} \left((f(t+\Delta t), g(t+\Delta t), h(t+\Delta t))-(f(t), g(t), h(t) ) \right) \\
+=\amp \lim_{\Delta t\to 0} \frac{1}{\Delta t} \left(f(t+\Delta t)-f(t), g(t+\Delta t)-g(t), h(t+\Delta t)-h(t) \right) \\
+=\amp \lim_{\Delta t\to 0}  \left(\frac{f(t+\Delta t)-f(t)}{\Delta t}, \frac{g(t+\Delta t)-g(t)}{\Delta t}, \frac{h(t+\Delta t)-h(t)}{\Delta t} \right) \\
+=\amp \left( \lim_{\Delta t\to 0}\frac{f(t+\Delta t)-f(t)}{\Delta t},  \lim_{\Delta t\to 0}\frac{g(t+\Delta t)-g(t)}{\Delta t},  \lim_{\Delta t\to 0}\frac{h(t+\Delta t)-h(t)}{\Delta t} \right) \\
+=\amp \left(f'(t), g'(t), h'(t) \right) 
+\end{align*}
+</div></article></div>
+<article class="example example-like" id="example-4"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-4"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">2.3</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-4"><article class="example example-like"><p id="p-36">Seja \(\vec{r}(t)=\cos 3t\vec{i}+(te^{-t})\vec{j}+(7+3t^2)\vec{k}\text{.}\) Podemos calcular a derivada de \(\vec{r}\) derivando termo a termo:</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r'}(t)=-3\sin 3t\vec{i}+(e^{-t}-te^{-t})\vec{j}+(6t)\vec{k}.
+\end{equation*}
+</div></article></div>
+<p id="p-37">O código abaixo pode ser utilizado para calcular a derivada de uma função vetorial .</p>
+<div class="sagecell-sage" id="sage-5"><script type="text/x-sage">var('t');
+r(t)=((t/4)^2, (t/4)^4, sin(3.14159*(t/4)));
+r1=diff(r,t,1)
+r1
+</script></div>
+<p id="p-38">Se \(\vec{r}'(t) \neq 0\text{,}\) pode-se definir o <em class="emphasis">vetor tangente unitário</em>, que aponta a direção em que a partícula está se movendo e tem comprimento sempre igual a 1 :</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{T}(t)=\frac{\vec{r}'(t)}{\|\vec{r}'(t)\|}=\frac{\vec{r}'(t)}{\sqrt{\langle\vec{r}'(t), \vec{r}'(t)\rangle}}
+\end{equation*}
+</div>
+<p id="p-39">Em um ponto onde \(\vec{r}'(t) = 0\text{,}\) podemos ter os "bicos" ou "quinas", indesejados no cálculo 1, escondidos. Veja por exemplo a função \(\vec{r}(t)=t^3\vec{i}+t^2\vec{j}\text{,}\) que é derivável, com \(\vec{r}'(t)=3t^2\vec{i}+2t\vec{j}\text{,}\) mas têm um bico em \(\vec{r}(0) = (0, 0)\text{,}\) no qual \(\vec{r}'(0) = 0\text{.}\)</p>
+<figure class="figure figure-like" id="figure-1"><div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;"><img src="images/CurvaComBico.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">2.4<span class="period">.</span></span><span class="space"> </span>Uma curva plana \(C\text{,}\) parametrizada por uma função derivável \(\vec{r}(t).\)</figcaption></figure><article class="remark remark-like" id="remark-4"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">2.5</span><span class="period">.</span>
+</h6>Uma curva \(C\text{,}\) parametrizada por \(\vec{r}:I \to \mathbb{R}^n\text{,}\) é dita <em class="alert">lisa</em> se \(\vec{r}(t)\) for diferenciável, \(\vec{r}'(t)\) for contínua e \(\vec{r}'(t) \neq 0\) para todo \(t \in I\text{.}\) Só podemos nos referir à direção do movimento e à reta tangente de uma curva nos pontos com \(\vec{r}'(t) \neq 0\text{.}\) Para uma curva lisa temos tangentes em todos os pontos.</article><p id="p-40">Se \(\vec{r}'(t) \neq 0\text{,}\) chamamos o vetor \(\vec{r}'(t)\) de <em class="emphasis">vetor tangente</em> à curva \(C\text{,}\) parametrizada pela função \(\vec{r}\text{,}\) no ponto \(\vec{r}(t)\text{.}\) A <em class="emphasis">reta tangente</em>, \(\vec{s}(u)\text{,}\) a \(C\) no ponto \(P=\vec{r}(t)\) é a reta que passa por \(P\) e tem vetor diretor \(\vec{r}'(t)\text{.}\) Assim, dado \(t \in I\text{,}\) fixo, a reta tangente pode ser parametrizada por</p>
+<div class="displaymath">
+\begin{align*}
+\amp \vec{s}:\mathbb{R} \to \mathbb{R}^3\\
+\amp \vec{s}(u) = u\vec{r}'(t)+\vec{r}(t)
+\end{align*}
+</div>
+<p id="p-41">O código abaixo plota uma curva espacial, sua reta tangente, o vetor tangente (ou velocidade) e o vetor tangente unitário.</p>
+<div class="sagecell-sage" id="sage-6"><script type="text/x-sage">var('t');
+r(t)=(cos(t/4), sin(t/4), sin(6*(t/4)))
+t0=0.2
+r1=diff(r,t,1);
+norm=(r1(0.2)).norm()
+norm
+P1=arrow(r(t0),r(t0)+r1(t0),color=hue(0.8),width=0.2) #vetor velocidade
+P2=arrow(r(t0), r(t0)+r1(t0)/norm,color=hue(0.3),width=0.2) #vetor tangente unitário
+P3=line([r(t0)-r1(t0),r(t0)+r1(t0)])#reta tangente
+S = parametric_plot3d(r(t), (t,-4*3.14159,4*3.14159),color='red')
+print(P1+P2+P3+S)
+P1+P2+P3+S
+</script></div>
+<em class="alert">Clique e resolva o exercício   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-5"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-5"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">2.6</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-5"><article class="exercise exercise-like"><p id="p-42">Para cada uma das funções vetoriais, calcule \(\vec{r}'(t)\) e utilize o código abaixo para plotar a curva, seu vetor tangente e sua reta tangente no ponto \(t_0\) dado:</p>
+<ol class="lower-alpha">
+<li id="li-6"><p id="p-derived-li-6">\(\vec{r}(t) = (\sin (t), 2\cos (t))\text{,}\) com \(t \in [0,2\pi]\text{,}\) \(t_0 = \pi/4\text{.}\)</p></li>
+<li id="li-7"><p id="p-derived-li-7">\(\vec{r}(t) = (e^t,e^{-t})\text{,}\) com \(t \in [0,1.5]\text{,}\) \(t_0=1\text{.}\)</p></li>
+<li id="li-8"><p id="p-derived-li-8">\(\vec{r}(t) = (t \cos(t),3t \sin(t))\text{,}\) com \(t \in [0,3]\text{,}\) \(t_0=1\text{.}\)</p></li>
+</ol></article></div>
+<div class="sagecell-sage" id="sage-7"><script type="text/x-sage">var('t');
+r(t)=(t^2, sin(t));
+r1(t)=(2*t,cos(t));
+t0=0.3
+P2=line([r(t0)-2*r1(t0),r(t0)+2*r1(t0)])#reta tangente
+P1=arrow(r(t0), r(t0)+r1(t0),color=hue(0.3),width=0.5) #vetor tangente 
+S = parametric_plot(r(t), (t,-5,5),color='red')
+print(P1+P2+S)
+P1+P2+S
+</script></div>
+<article class="remark remark-like" id="remark-5"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">2.7</span><span class="period">.</span>
+</h6>
+<p id="p-43">A <em class="emphasis">segunda derivada</em> de uma função vetorial \(\vec{r}(t)\) é a derivada da derivada, \(\vec{r}''(t)=(\vec{r}'(t))'\text{,}\) e, se \(\vec{r}(t)\) descreve a trajetória de um objeto pontual, pode ser interpretada como a aceleração sofrida pelo objeto.</p></article><article class="remark remark-like" id="remark-6"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">2.8</span><span class="period">.</span>
+</h6>
+<p id="p-44">Se \(\vec{r}(t)\) é uma parametrização de uma curva lisa \(C\) que satisfaz<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-3" id="fn-3"><sup> 1 </sup></a> \(\|\vec{r}'(t)\| =1\text{,}\) então \(\|\vec{r}''(t)\|\) é a <em class="emphasis">curvatura</em> e mede quanto a curva está mudando de direção.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-3"><div class="fn">Tal parametrização é chamada de uma parametrização pelo comprimento de arco.</div></div></article><article class="theorem theorem-like" id="Regras_derivacao"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">2.9</span><span class="period">.</span>
+</h6>
+<p id="p-45">Sejam \(\vec{u}(t)=(f_u(t), g_u(t), h_u(t))\) e \(\vec{v}(t)=(f_v(t), g_v(t), h_v(t))\) funções vetoriais deriváveis, \(f(t)\) uma função real derivável e \(c\in \mathbb{r}\) um escalar. Então, se fizer sentido avaliar as funções envolvidas para os respectivos valores de \(t\text{,}\) temos:</p>
+<ol class="decimal">
+<li id="li-9"><p id="p-derived-li-9">\(\frac{d}{dt}[\vec{u}(t)\pm\vec{v}(t)] = \vec{u}'(t)\pm\vec{v}'(t)\text{.}\) <article class="hiddenproof" id="proof-3"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-3"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-3"><article class="hiddenproof"><p id="p-46">A equação pode ser calculada diretamente das definições das operações:</p>
+<div class="displaymath">
+\begin{align*}
+\frac{d}{dt}[\vec{u}(t)\pm\vec{v}(t)]=\amp\frac{d}{dt}[(f_u(t)\pm f_v(t), g_u(t) \pm g_v(t), h_u(t) \pm h_v(t))] \\
+=\amp [(f_u'(t)\pm f_v'(t), g_u'(t) \pm g_v'(t), h_u'(t) \pm h_v'(t))] \\
+=\amp (f_u'(t), g_u'(t), h_u'(t)) \pm  (f_v'(t), g_v'(t), h_v'(t)) = \vec{u}'(t) \pm \vec{v}'(t).
+\end{align*}
+</div></article></div></p></li>
+<li id="li-10"><p id="p-derived-li-10">\(\frac{d}{dt}[c\vec{u}(t)] = c\vec{u}'(t)\text{.}\) <article class="hiddenproof" id="proof-4"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-4"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-4"><article class="hiddenproof"><p id="p-47">A equação pode ser calculada diretamente das definições das operações:</p>
+<div class="displaymath">
+\begin{align*}
+\frac{d}{dt}[c\vec{u}(t)]=\amp\frac{d}{dt}(cf_u(t), cg_u(t), ch_u(t)) \\
+=\amp (cf_u'(t), cg_u'(t), ch_u'(t)) \\
+=\amp c(f_u'(t), g_u'(t), h_u'(t)) = c\vec{u}'(t).
+\end{align*}
+</div></article></div></p></li>
+<li id="li-11"><p id="p-derived-li-11">\(\frac{d}{dt}[f(t)\vec{u}(t)] = f'(t)\vec{u}(t) + f(t)\vec{u}'(t)\text{.}\) <article class="hiddenproof" id="proof-5"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-5"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-5"><article class="hiddenproof"><p id="p-48">A equação pode ser calculada diretamente das definições das operações:</p>
+<div class="displaymath">
+\begin{align*}
+\amp\frac{d}{dt}[f(t)\vec{u}(t)] \\
+\amp=\frac{d}{dt}[(f(t) f_u(t),f(t) g_u(t), f(t) h_u(t))] \\
+\amp= (f'(t) f_u(t)+f(t) f_u'(t),f'(t) g_u(t)+f(t) g_u'(t), f'(t) h_u(t)+f(t) h_u'(t)) \\
+\amp= (f'(t) f_u(t),f'(t) g_u(t), f'(t) h_u(t)) + (f(t) f_u'(t), f(t) g_u'(t), f(t) h_u'(t))\\
+\amp= f'(t)\vec{u}(t)+f(t)\vec{u}'(t) .
+\end{align*}
+</div></article></div></p></li>
+<li id="li-12"><p id="p-derived-li-12">\(\frac{d}{dt}[\vec{u}(t)\cdot\vec{v}(t)] =\vec{u}'(t)\cdot\vec{v}(t)+\vec{u}(t)\cdot\vec{v}'(t)\text{.}\) <article class="hiddenproof" id="proof-6"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-6"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-6"><article class="hiddenproof"><p id="p-49">A equação pode ser calculada diretamente das definições das operações:</p>
+<div class="displaymath">
+\begin{align*}
+\amp\frac{d}{dt}[\vec{u}(t)\cdot\vec{v}(t)]\\
+\amp=\frac{d}{dt}(f_u(t)f_v(t)+g_u(t)g_v(t)+ h_u(t)h_v(t)) \\
+\amp = (f_u'(t)f_v(t)+f_u(t)f_v'(t)+g_u'(t)g_v(t)+g_u(t)g_v'(t)+ h_u'(t)h_v(t)+h_u(t)h_v'(t)) \\
+\amp = (f_u'(t)f_v(t)+g_u'(t)g_v(t)+ h_u'(t)h_v(t)) +(f_u(t)f_v'(t)+g_u(t)g_v'(t)+ h_u(t)h_v'(t)) \\
+\amp = \vec{u}'(t)\cdot\vec{v}(t)+\vec{u}(t)\cdot\vec{v}'(t) .
+\end{align*}
+</div></article></div></p></li>
+<li id="li-13"><p id="p-derived-li-13">\(\frac{d}{dt}[\vec{u}(t)\times\vec{v}(t)] =\vec{u}'(t)\times\vec{v}(t)+\vec{u}(t)\times\vec{v}'(t)\text{.}\) <article class="hiddenproof" id="proof-7"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-7"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-7"><article class="hiddenproof"><p id="p-50">A equação pode ser calculada diretamente das definições das operações:</p>
+<div class="displaymath">
+\begin{align*}
+\frac{d}{dt}\amp[\vec{u}(t)\times\vec{v}(t)]\\
+=\amp \frac{d}{dt}(g_u(t)h_v(t) - h_u(t)g_v(t), f_u(t)h_v(t) - h_u(t)f_v(t), f_u(t)g_v(t) - g_u(t)f_v(t)) \\
+=\amp (g_u'(t)h_v(t) - h_u'(t)g_v(t), f_u'(t)h_v(t) - h_u'(t)f_v(t), f_u'(t)g_v(t) - g_u'(t)f_v(t)) \\
+\amp +(g_u(t)h_v'(t) - h_u(t)g_v'(t), f_u(t)h_v'(t) - h_u(t)f_v'(t), f_u(t)g_v'(t) - g_u(t)f_v'(t)) \\
+=\amp \vec{u}'(t)\times\vec{v}(t)+\vec{u}(t)\times\vec{v}'(t) .
+\end{align*}
+</div></article></div></p></li>
+<li id="li-14"><p id="p-derived-li-14">\(\frac{d}{dt}[\vec{u}(f(t))] = f'(t)\vec{u}'(f(t))\text{.}\) <article class="hiddenproof" id="proof-8"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-8"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-8"><article class="hiddenproof"><p id="p-51">A equação pode ser calculada diretamente das definições das operações:</p>
+<div class="displaymath">
+\begin{align*}
+\frac{d}{dt}[\vec{u}(f(t))] \amp =  ((f_u(f(t)))',(g_u(f(t)))', (h_u(f(t)))')\\
+\amp=(f'(t)f_u'(f(t)),f'(t)g_u'(f(t)), f'(t)h_u'(f(t))) \\
+\amp=f'(t)(f_u'(f(t)),g_u'(f(t)), h_u'(f(t))) \\
+\amp= f'(t)\vec{u}'(t) .
+\end{align*}
+</div></article></div></p></li>
+</ol></article><em class="alert">Clique e resolva o exercício   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-6"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-6"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">2.10</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-6"><article class="exercise exercise-like"><p id="p-52">Qual a curva parametrizada pela função vetorial \(\vec{r}(t) = (t, \sin (t))\text{,}\) \(t \in \mathbb{R}\text{?}\) Para cada uma das funções \(f(t):\mathbb{R} \to \mathbb{R}\) abaixo, calcule \(\vec{r}(f(t))\text{,}\) \(\|(\vec{r}(f(t)))'\|\) e explique, como cada função altera o modo com que a curva é percorrida:</p>
+<ol class="lower-alpha">
+<li id="li-15"><p id="p-derived-li-15">\(f(t)=5t\text{;}\)</p></li>
+<li id="li-16"><p id="p-derived-li-16">\(f(t)=t^3\text{;}\)</p></li>
+<li id="li-17"><p id="p-derived-li-17">\(f(t)=-t\text{.}\)</p></li>
+</ol></article></div></section><section class="subsection" id="subsection-2"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">2.2</span> <span class="title">Integrais de funções vetoriais.</span>
+</h3>
+<p id="p-53">As integrais definidas de funções vetoriais podem ser utilizadas para a obtenção das primitivas de uma função vetorial. Uma aplicação importante delas na física é a obtenção da  posição de um objeto pontual a partir das forças que agem sobre ele (conhecida a massa e a posição e a velocidades iniciais) por duas integrais sucessivas.</p>
+<article class="definition definition-like" id="definition-4"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">2.11</span><span class="period">.</span>
+</h6>
+<p id="p-54">A <em class="emphasis">integral definida</em>  de uma função vetorial<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-4" id="fn-4"><sup> 2 </sup></a> \(\vec{r}:I \to \mathbb{R}^3\) de \(a\) até \(b\text{,}\) com \(a,b \in \overline{I}\text{,}\) \(\vec{r}(t) = f(t) \vec{i}+ g(t) \vec{j} + h(t) \vec{k}\) é definida como:</p>
+<div class="displaymath">
+\begin{equation*}
+\int_a^b \vec{r}(t) dt = \int_a^b f(t) dt\vec{i}+\int_a^b g(t) dt\vec{j}+\int_a^b h(t) dt\vec{k},
+\end{equation*}
+</div>
+<p class="continuation">se as integrais existirem.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-4"><div class="fn">Análogo para  \(\vec{r}:I \to \mathbb{R}^2\text{.}\)</div></div></article><article class="remark remark-like" id="remark-7"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">2.12</span><span class="period">.</span>
+</h6>
+<p id="p-55">O conjunto \(I \subset \mathbb{R}\) não precisa ser um intervalo. Se houver pontos isolados onde a função não está definida ou existem descontinuidades, é necessário dividir os limites de integração das integrais  nesses pontos e calcular os limites laterais.</p></article><p id="p-56">O Teorema Fundamental do Cálculo pode ser extendido para funções vetoriais contínuas (ou  para cada um dos intervalos nos quais \(\vec{r}\) é contínua):</p>
+<div class="displaymath">
+\begin{align*}
+\int_a^b \vec{r}(t)dt = \amp \int_a^b f(t) dt \vec{i} + \int_a^b g(t) dt \vec{j} + \int_a^b h(t) dt \vec{k}\\
+= \amp (F(b)-F(a)) \vec{i} + (G(b)-G(a))\vec{j} + (H(b)-H(a))\vec{k}\\
+= \amp (F(b)\vec{i} + G(b)\vec{j} + H(b)\vec{k}) - (F(a)) \vec{i} + G(a) \vec{j} + H(a)\vec{k})\\
+=\amp \vec{R}(b) - \vec{R}(a),
+\end{align*}
+</div>
+<p class="continuation">onde \(\vec{R}(t)\) é uma primitiva de \(\vec{r}(t)\text{,}\) ou seja \(\vec{R}'(t)= \vec{r}(t)\text{.}\)</p>
+<p id="p-57">Denotamos as <em class="emphasis">integrais indefinidas (primitivas)</em> como</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{R}(t) = \int r(t) dt.
+\end{equation*}
+</div>
+<p id="p-58">O Sagemath pode ser utilizado para calcular Integrais definidas.</p>
+<div class="sagecell-sage" id="sage-8"><script type="text/x-sage">var('t');
+from sage.symbolic.integration.integral import definite_integral
+r(t)=(cos(t/4), sinh(t/4), t^3);
+(definite_integral(r(t)[0],t,0,2),definite_integral(r(t)[1],t,0,2),definite_integral(r(t)[2],t,0,2))
+</script></div>
+<p id="p-59">e Integrais indefinidas.</p>
+<div class="sagecell-sage" id="sage-9"><script type="text/x-sage">from sage.symbolic.integration.integral import indefinite_integral
+r(t)=(cos(t/4), sinh(t/4), t^3);
+(indefinite_integral(r(t)[0],t),indefinite_integral(r(t)[1],t),indefinite_integral(r(t)[2],t))
+</script></div>
+<em class="alert">Cuidado!!! Existem vários tipos de integrais distintas para funções vetoriais, as quais veremos mais adiante. Distinguir entre elas será muito importante!!!</em></section></section></div></main>
+</div>
+</body>
+</html>

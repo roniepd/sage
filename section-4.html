@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:52-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Campos Vetoriais.</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-3.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-5.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-3.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-5.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link active">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-4"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span>
+</h2>
+<section class="subsection" id="subsection-3"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">4.1</span> <span class="title">Campos de força e velocidade.</span>
+</h3>
+<p id="p-79">Na física e suas aplicações, muitas vezes, temos interesse em uma <em class="emphasis">grandeza vetorial</em> que assume valores distintos em pontos distintos de uma região no plano ou no espaço. Exemplos disso são campos de velocidades (como a velocidade do vento), campos gravitacionais ou o campo elétrico.</p>
+<figure class="figure figure-like" id="figure-2"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="images/Wind_speeds.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">4.1<span class="period">.</span></span><span class="space"> </span>A figura abaixo mostras amostras dos vetores de  velocidade  do vento sobre a Península Ibérica (fonte:<a class="external" href="http://www.rforscience.com/portfolio/wind-speed-and-direction/" target="_blank">Estuarine "&amp;" Delta Systems: User R!</a> ).</figcaption></figure><p id="p-80">Os vetores velocidade do vento (ou o campo de velocidades) sobre uma região do plano ou do espaço são um exemplo de <em class="emphasis">campo vetorial</em>.</p>
+<p id="p-81">Para um campo de velocidades, podemos ter interesse, por exemplo, na tragetória percorrida por uma partícula movendo-se de acordo com o campo de velocidades. Tal tragetória é chamada de uma <em class="emphasis">linha de fluxo</em>. O código abaixo plota um campo vetorial 2D e três de suas linhas de fluxo.</p>
+<div class="sagecell-sage" id="sage-15"><script type="text/x-sage">x,y,t = var('x,y,t')
+x1=0.2;y1=0.6; # pontos iniciais para a curva
+r1(t)=(-ln(-t+e^(-x1)), -ln(-t+e^(-y1)))
+x2=0.4;y2=0.3; # pontos iniciais para a curva
+r2(t)=(-ln(-t+e^(-x2)), -ln(-t+e^(-y2)))
+x3=0.4;y3=0.46; # pontos iniciais para a curva
+r3(t)=(-ln(-t+e^(-x3)), -ln(-t+e^(-y3)))
+P0=plot_vector_field((e^(x),e^(y)), (x,0,3), (y,0,3))
+P1=parametric_plot(r1(t), (t,0,0.5)) #o tempo deve ser menor do que 1 para essa curva
+P2=parametric_plot(r2(t), (t,0,0.63), color='green') #o tempo deve ser menor do que 1 para essa curva
+P3=parametric_plot(r3(t), (t,0,0.52), color='red') #o tempo deve ser menor do que 1 para essa curva
+P0+P1+P2+P3
+</script></div>
+<article class="definition definition-like" id="definition-6"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">4.2</span><span class="period">.</span>
+</h6>
+<p id="p-82">Seja \(D \subset \mathbb{R}^2\text{.}\) Um <em class="emphasis">campo vetorial</em>  sobre \(D\) é uma função:</p>
+<div class="displaymath">
+\begin{align*}
+\vec{F}:D \amp \to \mathbb{R}^2\\
+(x,y) \amp \to \vec{F}(x,y) = P(x,y)\vec{i} + Q(x,y) \vec{j}.
+\end{align*}
+</div>
+<p class="continuation">As funções reais de duas variáveis<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-8" id="fn-8"><sup> 1 </sup></a> \(P,Q: D  \to \mathbb{R}\) são as funções componentes do campo vetorial.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-8"><div class="fn">Ou campos escalares.</div></div></article><p id="p-83">Para esboçarmos um campo vetorial precisamos escolher diversos pontos \((x,y) \in D\) e plotarmos o (representante do) vetor \(\vec{F}(x,y)\) iniciando no ponto \((x,y)\text{.}\)</p>
+<em class="alert">Clique e resolva o exercício   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-10"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-10"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">4.3</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-10"><article class="exercise exercise-like"><p id="p-84">Consideremos o campo vetorial \(\vec{F}(x,y)= - y\vec{i}+x\vec{j}\text{.}\) O código abaixo representa o valor (vetor) do campo no ponto \((1,0)\text{,}\) que é \(\vec{j}\)</p>
+<p id="p-85">No código abaixo o mesmo vetor está sendo plotado 8 vezes. Altere os pontos inicial (P2I, ..., P8I) e final (P2F, ...,P8F) para plotar outros pontos do campo vetorial.</p></article></div>
+<div class="sagecell-sage" id="sage-16"><script type="text/x-sage">var('x,y')
+F(x,y)=(-y,x)
+P1I=(1,0)
+P1F=vector([1,0])+vector(F(1,0))
+P2I=(1,0)
+P2F=vector([1,0])+vector(F(1,0))
+P3I=(1,0)
+P3F=vector([1,0])+vector(F(1,0))
+P4I=(1,0)
+P4F=vector([1,0])+vector(F(1,0))
+P5I=(1,0)
+P5F=vector([1,0])+vector(F(1,0))
+P6I=(1,0)
+P6F=vector([1,0])+vector(F(1,0))
+P7I=(1,0)
+P7F=vector([1,0])+vector(F(1,0))
+P8I=(1,0)
+P8F=vector([1,0])+vector(F(1,0))
+V1=arrow(P1I,P1F,color=hue(0.8),width=0.2) #um vetor do campo
+V2=arrow(P2I,P2F,color=hue(0.8),width=0.2) #um vetor do campo
+V3=arrow(P3I,P3F,color=hue(0.8),width=0.2) #um vetor do campo
+V4=arrow(P4I,P4F,color=hue(0.8),width=0.2) #um vetor do campo
+V5=arrow(P5I,P5F,color=hue(0.8),width=0.2) #um vetor do campo
+V6=arrow(P6I,P6F,color=hue(0.8),width=0.2) #um vetor do campo
+V7=arrow(P7I,P7F,color=hue(0.8),width=0.2) #um vetor do campo
+V8=arrow(P8I,P8F,color=hue(0.8),width=0.2) #um vetor do campo
+print(V1+V2+V3+V4+V5+V6+V7+V8)
+V1+V2+V3+V4+V5+V6+V7+V8
+</script></div>
+<p id="p-86">Podemos usar o Sagemath para plotar um campo vetorial automaticamente se passarmos as funções componentes:</p>
+<div class="sagecell-sage" id="sage-17"><script type="text/x-sage">x,y = var('x y')
+plot_vector_field((-y,x), (x,-3,3), (y,-3,3))
+</script></div>
+<p id="p-87">e suas linhas de fluxo:</p>
+<div class="sagecell-sage" id="sage-18"><script type="text/x-sage">x,y = var('x y')
+streamline_plot((-y, x), (x,-3,3), (y,-3,3))
+</script></div>
+<em class="alert">Clique e resolva o exercício   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-11"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-11"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">4.4</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-11"><article class="exercise exercise-like"><p id="p-88">Utilize o código abaixo para plotar os campos vetoriais abaixo e suas linhas de fluxo</p>
+<ol class="lower-alpha">
+<li id="li-27"><p id="p-derived-li-27">\(\vec{F}(x,y) = (sin(x), cos(y))\text{;}\)</p></li>
+<li id="li-28"><p id="p-derived-li-28">\(\vec{F}(x,y) = (x, y)\text{;}\)</p></li>
+<li id="li-29"><p id="p-derived-li-29">\(\vec{F}(x,y) = (x, -y)\text{;}\)</p></li>
+<li id="li-30"><p id="p-derived-li-30">\(\vec{F}(x,y) = (y, x)\text{.}\)</p></li>
+</ol></article></div>
+<div class="sagecell-sage" id="sage-19"><script type="text/x-sage">x,y = var('x y')
+plot_vector_field((-y,x), (x,-3,3), (y,-3,3))+streamline_plot((-y, x), (x,-3,3), (y,-3,3))
+</script></div>
+<p id="p-89">Além dos campos vetoriais no plano, também temos interesse em campos vetoriais no espaço.</p>
+<article class="definition definition-like" id="definition-7"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">4.5</span><span class="period">.</span>
+</h6>
+<p id="p-90">Seja \(E \subset \mathbb{R}^3\text{.}\) Um <em class="emphasis">campo vetorial</em> sobre \(E\) é uma função:</p>
+<div class="displaymath">
+\begin{align*}
+\vec{F}:E \amp \to \mathbb{R}^3\\
+(x,y,z) \amp \to \vec{F}(x,y,z) = P(x,y,z)\vec{i} + Q(x,y,z) \vec{j} + R(x,y,z)\vec{k}.
+\end{align*}
+</div>
+<p class="continuation">As funções reais de três variáveis<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-9" id="fn-9"><sup> 2 </sup></a> \(P,Q,R: E  \to \mathbb{R}\) são as funções componentes do campo vetorial.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-9"><div class="fn">Ou campos escalares.</div></div></article><p id="p-91">Plot de um campo vetorial 3D.</p>
+<div class="sagecell-sage" id="sage-20"><script type="text/x-sage">var('x y z')
+f=(x*cos(z),-y*cos(z),sin(z))
+plot_vector_field3d(f, (x,0,pi), (y,0,pi), (z,0,pi),plot_points=7)
+</script></div>
+<article class="example example-like" id="campo_grav"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-campo_grav"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">4.6</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-campo_grav"><article class="example example-like"><p id="p-92">Pela Lei da Gravitação Universal de Newton, a força gravitacional que dois corpos pontuais, de massas \(m\) e \(M\text{,}\) exercem (um sobre o outro) é</p>
+<div class="displaymath">
+\begin{equation*}
+\|\vec{F}\|=\frac{mMG}{r^2},
+\end{equation*}
+</div>
+<p class="continuation">onde \(r\) é a distância entre eles. Se o corpo de massa \(M\) está na origem e o objeto com massa \(m\) está no ponto \((x,y,z)\text{,}\) então a força no segundo corpo aponta na direção \(-\vec{x}/\|\vec{x}\|\) e o vetor de força é</p>
+<div class="displaymath">
+\begin{align*}
+\vec{F}(\vec{x})=\amp-\frac{mMG}{r^2}\frac{\vec{x}}{\|\vec{x}\|} =-\frac{mMG}{\|\vec{x}\|^3}\vec{x} \\
+=\amp -\frac{mMG}{(x^2+y^2+z^2)^{3/2}}x\vec{i} -\frac{mMG}{(x^2+y^2+z^2)^{3/2}}y\vec{j} -\frac{mMG}{(x^2+y^2+z^2)^{3/2}}z\vec{k}. 
+\end{align*}
+</div></article></div>
+<article class="remark remark-like" id="remark-10"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">4.7</span><span class="period">.</span>
+</h6>Tomando \(m=1\) no exemplo acima, obtemos o <em class="emphasis">campo gravitacional</em> gerado por um corpo de massa \(M\) na origem:<div class="displaymath">
+\begin{align*}
+\vec{F}(\vec{x})=\amp -\frac{MG}{(x^2+y^2+z^2)^{3/2}}x\vec{i} -\frac{MG}{(x^2+y^2+z^2)^{3/2}}y\vec{j} -\frac{MG}{(x^2+y^2+z^2)^{3/2}}z\vec{k}. 
+\end{align*}
+</div></article></section><article class="remark remark-like" id="remark-11"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">4.8</span><span class="period">.</span>
+</h6>De modo análogo (utilizando a Lei de Coulomb) ao <a class="xref" data-knowl="./knowl/campo_grav.html" title="Exemplo 4.6">Exemplo 4.6</a>, obtemos que o <em class="emphasis">campo elétrico</em> gerado por uma partículade carga \(Q\) na origem é<div class="displaymath">
+\begin{align*}
+\vec{F}(\vec{x})=\amp \frac{k Q}{(x^2+y^2+z^2)^{3/2}}x\vec{i} +\frac{k Q}{(x^2+y^2+z^2)^{3/2}}y\vec{j} +\frac{k Q}{(x^2+y^2+z^2)^{3/2}}z\vec{k}, 
+\end{align*}
+</div>onde \(k\) é uma constante que depende dos materiais e das unidades utilizadas.</article><p id="p-93">Acrescentar observação sobre campos gerados por partículas fora da origem.</p>
+<em class="alert">Clique e resolva o exercício   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-12"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-12"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">4.9</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-12"><article class="exercise exercise-like"><p id="p-94">Para obter o campo elétrico formado por duas partículas pontuais, podemos somar os campos gerados por cada uma delas. Escreva uma expressão para o campo elétrico formado por uma partícula de carga -1 em \((-1,0)\) e outa partícula de carga -1 em \((1,0)\) (assumindo \(k=1\)). Utilize o código abaixo para esboçar o campo e suas linhas de fluxo.</p></article></div>
+<div class="sagecell-sage" id="sage-21"><script type="text/x-sage">x,y = var('x y')
+plot_vector_field((-y,x), (x,-3,3), (y,-3,3))+streamline_plot((-y, x), (x,-3,3), (y,-3,3))
+</script></div>
+<article class="remark remark-like" id="remark-12"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">4.10</span><span class="period">.</span>
+</h6>O campo elétrico e o campo gravitacional dos exemplos acima apresentam <em class="emphasis">singularidades</em> na origem. Isso ocorre pois suas componentes tendem a infinito quando \((x,y,z) \to (0,0,0)\) (é fácil de verificar que isso vale quando tomamos duas das variáveis iguais a zero e deixamos a terceira tender a zero). Campos vetoriais também podem ter problemas de descontinuidade em alguns pontos, o que torna tais campos mais difíceis de estudar. Um campo vetorial \(\vec{F}(x,y,z) = P(x,y,z) \vec{i} + Q(x,y,z) \vec{j} + R(x,y,z) \vec{k}\) é <em class="emphasis">contínuo</em> se, e somente se, suas funções componentes \(P, Q\) e \(R\) são contínuas (do cálculo 2).</article><section class="subsection" id="subsection-4"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">4.2</span> <span class="title">Campo gradiente.</span>
+</h3>
+<p id="p-95">A partir de uma função de duas ou três variáveis  \(f\text{,}\) podemos gerar um campo vetorial, chamado de <em class="emphasis">campo gradiente</em>. Veremos que alguns campos de particular interesse são gerados a partir de funções (o gravitacional e o elétrico, por exemplo).</p>
+<article class="definition definition-like" id="definition-8"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">4.11</span><span class="period">.</span>
+</h6>
+<p id="p-96">Se \(f:E \subset \mathbb{R}^3 \to \mathbb{R}\) é uma função diferenciável de três variáveis <a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-10" id="fn-10"><sup> 3 </sup></a> (ou campo escalar), definimos o <em class="emphasis">gradiente</em> de \(f\) como o campo vetorial \(\nabla f :E \to \mathbb{R}^3\) definido por</p>
+<div class="displaymath">
+\begin{equation*}
+\mbox{grad} f = \nabla f =\frac{\partial f}{\partial x} \vec{i} + \frac{\partial f}{\partial y} \vec{j} +\frac{\partial f}{\partial z} \vec{k}.
+\end{equation*}
+</div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-10"><div class="fn">Análogo para funções diferenciáveis de duas variáveis.</div></div></article><p id="p-97">Recordamos do curso de cálculo 2 que o vetor gradiente é, em cada ponto, perpendicular às curvas de nível da função, como ilustrado no código a seguir .</p>
+<div class="sagecell-sage" id="sage-22"><script type="text/x-sage">u, v = var('u v')
+f =(u^2 + v^2)
+plot_vector_field(f.gradient(), (u,-2,2), (v,-2,2), color='blue')+contour_plot(f, (u,-2,2), (v,-2,2), fill=False, plot_points=150)
+</script></div>
+<em class="alert">Clique e resolva o exercício   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-13"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-13"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">4.12</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-13"><article class="exercise exercise-like"><p id="p-98">Determine os campos gradiente das funções abaixo (escreva-os explicitamente) e utilize o código acima para plotar os campos e as curvas de nível das respectivas funções:</p>
+<ol class="lower-alpha">
+<li id="li-31"><p id="p-derived-li-31">\(f(x,y) = x^2+y\text{;}\)</p></li>
+<li id="li-32"><p id="p-derived-li-32">\(f(x,y) = x \sinh(y)+y \sinh(x)\text{.}\)</p></li>
+</ol></article></div>
+<article class="example example-like" id="grav_cons"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-grav_cons"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">4.13</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-grav_cons"><article class="example example-like"><p id="p-99">O campo gradiente da função</p>
+<div class="displaymath">
+\begin{equation*}
+f(x,y,z) = \frac{MG}{\sqrt{x^2+y^2+z^2}}
+\end{equation*}
+</div>
+<p class="continuation">é</p>
+<div class="displaymath">
+\begin{align*}
+\nabla f=\amp -\frac{MG}{(x^2+y^2+z^2)^{3/2}}x\vec{i} -\frac{MG}{(x^2+y^2+z^2)^{3/2}}y\vec{j} -\frac{MG}{(x^2+y^2+z^2)^{3/2}}z\vec{k}.
+\end{align*}
+</div>
+<p class="continuation">Isso quer dizer que o campo gravitacional é o gradiente da função \(f\text{.}\)</p></article></div>
+<article class="remark remark-like" id="remark-13"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">4.14</span><span class="period">.</span>
+</h6>Um campo vetorial \(\vec{F}:E\subset \mathbb{R}^n \to \mathbb{R}^n\text{,}\) com \(n=2\) ou \(3\) é chamado de <em class="emphasis">conservativo</em> se existe uma função de várias variáveis (ou campo escalar) \(f :E\to \mathbb{R}\text{,}\) tal que<div class="displaymath">
+\begin{equation*}
+\vec{F}=\nabla f.
+\end{equation*}
+</div>Nesse caso \(f\) é dita a <em class="emphasis">função potencial</em> do campo \(\vec{F}\text{.}\)</article></section></section></div></main>
+</div>
+</body>
+</html>

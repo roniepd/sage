@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:52-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Teorema Fundamental para Integrais de Linha</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-6.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-8.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-6.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-8.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link active">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-7"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span>
+</h2>
+<section class="subsection" id="subsection-10"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">7.1</span> <span class="title">Integrais de linha de campos conservativos.</span>
+</h3>
+<p id="p-142">O cálculo das integrais de linha é muito mais fácil para campos conservativos.</p>
+<article class="theorem theorem-like" id="Teorema_Fundamental_Int_Linha"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">7.1</span><span class="period">.</span><span class="space"> </span><span class="title">Teorema Fundamental para integrais de linha.</span>
+</h6>
+<p id="p-143">Seja \(C\) uma curva lisa dada pela função vetorial \(r(t)=(x(t),y(t),z(t))\text{,}\) \(a \leq t \leq b\text{.}\) Seja \(f\) uma função diferenciável de duas ou três variáveis, cujo vetor gradiente \(\nabla f\) é contínuo em \(C\text{.}\) Então</p>
+<div class="displaymath">
+\begin{equation*}
+\int_C \nabla f \cdot d\vec{r} = f(\vec{r}(b))-f(\vec{r}(a)).
+\end{equation*}
+</div></article><article class="hiddenproof" id="proof-9"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-9"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-9"><article class="hiddenproof"><p id="p-144">Nas condições do enunciado podemos calcular</p>
+<div class="displaymath">
+\begin{align*}
+\int_C \nabla f \cdot d\vec{r} =\amp \int_a^b \nabla{f}(\vec{r}(t)) \cdot \vec{r}'(t)dt\\
+=\amp \int_a^b \frac{\partial f}{\partial x}(\vec{r}(t)) x'(t) + \frac{\partial f}{\partial y}(\vec{r}(t)) y'(t) + \frac{\partial f}{\partial z}(\vec{r}(t)) z'(t) dt\\
+=\amp \int_a^b \frac{d}{dt}f(\vec{r}(t)) dt = \left.f(\vec{r}(t))\right|_a^b = f(\vec{r}(b))- f(\vec{r}(a)).
+\end{align*}
+</div></article></div>
+<article class="example example-like" id="example-12"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-12"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">7.2</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-12"><article class="example example-like"><p id="p-145">Qual o trabalho realizado pelo campo gravitacional</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{F}(\vec{x})=-\frac{mMG}{\|\vec{x}\|^3}\vec{x}
+\end{equation*}
+</div>
+<p class="continuation">ao mover uma partícula do ponto \((1,0,5)\) ao ponto \((2,-1,0)\) ao longo de uma curva lisa por partes?</p>
+<p id="p-146">Recordando (do  <a class="xref" data-knowl="./knowl/grav_cons.html" title="Exemplo 4.13">Exemplo 4.13</a>) que \(\vec{F} = \nabla f\text{,}\) com</p>
+<div class="displaymath">
+\begin{equation*}
+f(\vec{x}) = \frac{mMG}{\|\vec{x}\|},
+\end{equation*}
+</div>
+<p class="continuation">temos</p>
+<div class="displaymath">
+\begin{equation*}
+W = \int_C  \vec{F} \cdot d\vec{r} = \int_C  \nabla f \cdot d\vec{r} = f(2,-1,0)  - f(1,0,5) = \frac{mMG}{\sqrt{5}}-\frac{mMG}{\sqrt{26}}.
+\end{equation*}
+</div></article></div>
+<em class="alert">Clique e resolva o exercício   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-24"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-24"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">7.3</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-24"><article class="exercise exercise-like"><p id="p-147">Qual o trabalho realizado pelo campo gravitacional para mover um corpo ao longo de uma curva fechada<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-13" id="fn-13"><sup> 1 </sup></a>, \(r:[a,b] \to \mathbb{R}^3\) ?</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-13"><div class="fn">Uma curva fechada é aquela que satisfaz \(r(b)=r(a)\text{.}\)</div></div></article></div>
+<article class="remark remark-like" id="remark-23"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">7.4</span><span class="period">.</span>
+</h6>
+<p id="p-148">O  <a class="xref" data-knowl="./knowl/Teorema_Fundamental_Int_Linha.html" title="Teorema 7.1: Teorema Fundamental para integrais de linha">Teorema 7.1</a> mostra que, para qualquer <em class="emphasis">campo vetorial conservativo</em> (aqueles em que \(\vec{F} = \nabla f\text{,}\) para algum campo escalar \(f\)), <em class="alert">o valor da integral depende apenas do ponto final e do ponto inicial</em> da curva. Em particular, <em class="alert">é zero o valor da integral de um campo conservativo sobre uma curva fechada</em> (que é aquela em que o ponto final é igual ao ponto inicial), pois teremos\(f(\vec{r}(b))-f(\vec{r}(a))=0\) no <a class="xref" data-knowl="./knowl/Teorema_Fundamental_Int_Linha.html" title="Teorema 7.1: Teorema Fundamental para integrais de linha">Teorema 7.1</a>.</p></article><article class="remark remark-like" id="remark-24"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">7.5</span><span class="period">.</span>
+</h6>
+<p id="p-149">Pode-se mostrar que, dentre os campos vetoriais definidos em regiões abertas e conexa, <em class="alert">apenas para os campos conservativos</em> o valor da integral de linha sobre qualquer curva depende apenas do ponto inicial e do ponto final e que as  integrais sobre curvas fechadas dão zero. Assim, se as integrais de linha de \(\vec{F}\) ao longo de qualquer curva não dependem do caminho (ou se as integrais sobre curvas fechadas do campo dão zero), existe alguma função \(f\) com \(\vec{F}=\nabla f\text{.}\)</p></article><p id="p-150">Como verificarmos se um campo é conservativo? O Teorema a seguir esclarece a situação:</p>
+<article class="theorem theorem-like" id="Teorema_Campos_Conservativos"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">7.6</span><span class="period">.</span>
+</h6>
+<p id="p-151">Seja \(\vec{F} = P \vec{i} + Q \vec{j} \) um campo vetorial sobre uma região \(D \subset \mathbb{R}^2\) aberta e simplesmente conexa <a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-14" id="fn-14"><sup> 2 </sup></a>, com \(P, Q\) de classe \(C^1\) (i. e. tem derivadas parciais e elas são contínuas). Então \(\vec{F}\) conservativo se, e somente se,</p>
+<div class="displaymath">
+\begin{equation*}
+\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}.
+\end{equation*}
+</div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-14"><div class="fn">Uma região é simplesmente conexa se quaisquer dois pontos \(A=(x_0, y_0)\) e \(B=(x_1, y_1)\) podem unidos por uma curva contínua e se quaisquer curvas unindo esses dois pontos pode ser deformadas continuamente uma na outra. (Intuitivamente, uma região sem furos)</div></div></article><article class="hiddenproof" id="proof-10"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-10"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-10"><article class="hiddenproof"><p id="p-152">(\(\Longrightarrow\)) Assumindo que \(\vec{F}\) é conservativo, temos que existe uma função potencial \(f:D \to \mathbb{R}\text{,}\) com \(\vec{F} = \nabla f\text{,}\) isto é, \(P=\partial f/ \partial x\) e \(Q=\partial f/ \partial y\text{,}\) então</p>
+<div class="displaymath">
+\begin{equation*}
+\frac{\partial P}{\partial y} = \frac{\partial^2 f}{\partial y \partial x} = \frac{\partial^2 f}{\partial x \partial y} = \frac{\partial Q}{\partial x}
+\end{equation*}
+</div>
+<p id="p-153">(\(\Longleftarrow\)) Utilizando o Teorema de Green, que veremos mais adiante, pode-se calcular que a integral de \(\vec{F}\) sobre uma curva fechada \(C\) é</p>
+<div class="displaymath">
+\begin{equation*}
+\oint_C \vec{F} \cdot d\vec{r}= \iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} dA = 0.
+\end{equation*}
+</div></article></div>
+<article class="example example-like" id="example-13"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-13"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">7.7</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-13"><article class="example example-like"><p id="p-154">O campo vetorial \(\vec{F} = (x-y^2)\vec{i} + (7x^2)\vec{j}\) não é conservativo em todo o plano, pois</p>
+<div class="displaymath">
+\begin{equation*}
+\frac{\partial P}{\partial y} = \frac{\partial (x-y^2)}{\partial y} = 2y
+\end{equation*}
+</div>
+<p class="continuation">e</p>
+<div class="displaymath">
+\begin{equation*}
+\frac{\partial Q}{\partial x} = \frac{\partial (7x^2)}{\partial x} = 14x.
+\end{equation*}
+</div>
+<p class="continuation">Como \(\partial P/\partial y \neq \partial Q/\partial x \text{,}\) o <a class="xref" data-knowl="./knowl/Teorema_Campos_Conservativos.html" title="Teorema 7.6">Teorema 7.6</a> garante que o campo não é conservativo, ou seja, que é impossível encontrar uma função \(f:\mathbb{R}^2 \to \mathbb{R}\) tal que \(\nabla f = \vec{F}\text{.}\)</p></article></div>
+<article class="example example-like" id="example-14"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-14"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">7.8</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-14"><article class="example example-like"><p id="p-155">O campo vetorial \(\vec{F} = 2xy^3\vec{i} + 3x^2y^2\vec{j}\)  é conservativo em todo o plano pois</p>
+<div class="displaymath">
+\begin{equation*}
+\frac{\partial P}{\partial y} = \frac{\partial (2xy^3)}{\partial y} = 6xy^2
+\end{equation*}
+</div>
+<p class="continuation">e</p>
+<div class="displaymath">
+\begin{equation*}
+\frac{\partial Q}{\partial x} = \frac{\partial 3x^2y^2}{\partial x} = 6xy^2.
+\end{equation*}
+</div>
+<p class="continuation">Como \(\partial P/\partial y = \partial Q/\partial x \text{,}\) as funções componentes de \(\vec{F}\) são contínuas e o plano é simplesmente conexo, o <a class="xref" data-knowl="./knowl/Teorema_Campos_Conservativos.html" title="Teorema 7.6">Teorema 7.6</a> garante que o campo é conservativo, e podemos encontrar uma função potencial \(f:\mathbb{R}^2 \to \mathbb{R}\) (tal que \(\nabla f = \vec{F}\)) calculando:</p>
+<div class="displaymath">
+\begin{equation*}
+\partial f/\partial x = P(x,y) = 2xy^3 \Longrightarrow f(x,y) = x^2y^3 + g(y)
+\end{equation*}
+</div>
+<p class="continuation">pois, como a derivada paracial era em relação a \(x\text{,}\) a "constante" pode depender de \(y\text{.}\) Então utilizamos que \(f(x,y) = x^2y^3 + g(y)\) ao utilizar a segunda parte da equação vetorial \(\nabla f = \vec{F}\text{:}\)</p>
+<div class="displaymath">
+\begin{align*}
+\amp\frac{\partial f}{\partial y} = Q(x,y) = 3x^2y^2 \Longrightarrow 3 x^2y^2 + g'(y) = 3x^2y^2\\
+\amp \Longrightarrow g'(y) = 0 \Longrightarrow  g(y) = C.
+\end{align*}
+</div>
+<p class="continuation">Assim \(f(x,y) =  x^2y^3 + C\text{,}\) para alguma constante \(C \in \mathbb{R}\text{.}\)</p></article></div>
+<em class="alert">Clique e resolva os exercícios abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-25"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-25"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">7.9</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-25"><article class="exercise exercise-like"><p id="p-156">Verifique se o campo vetorial \(\vec{F} (x,y) = \mbox{sen}(x)cos(y)\vec{i} + \mbox{cos}(x)sen(y)\vec{j}\) é conservativo, se for calcule uma função potencial para \(\vec{F}\text{.}\) Em seguida calcule (utilizando a função potencial se possível) \(\int_C \vec{F}\cdot d\vec{r},\) onde \(C\) é a curva plana parametrizada por \(\vec{r}(t)=(2t, t)\text{,}\) \(t \in [0,3]\text{.}\)</p></article></div>
+<article class="exercise exercise-like" id="exercise-26"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-26"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">7.10</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-26"><article class="exercise exercise-like"><p id="p-157">Verifique se o campo vetorial \(\vec{F} (x,y) = \mbox{sen}(x)cos(y)\vec{i} - \mbox{cos}(x)sen(y)\vec{j}\) é conservativo, se for calcule uma função potencial para \(\vec{F}\text{.}\) Em seguida calcule (utilizando a função potencial se possível) \(\int_C \vec{F}\cdot d\vec{r},\) onde \(C\) é a curva plana parametrizada por \(\vec{r}(t)=(2t, t)\text{,}\) \(t \in [0,3]\text{.}\)</p></article></div>
+<p id="p-158">Verifique se o campo é conservativo com o código abaixo.</p>
+<div class="sagecell-sage" id="sage-33"><script type="text/x-sage">var('x y')
+F(x,y)=(x+y, x-y)
+Py = diff(F[0],y,1).full_simplify()
+Qx = diff(F[1],x,1).full_simplify()
+if Py != Qx:
+    print('O campo não é conservativo')
+else:
+    from sage.symbolic.integration.integral import indefinite_integral
+    a = F[0].integral(x)
+    g1= F[1] - diff(a,y,1)
+    f= a + g1.integral(y) 
+    print('A função abaixo é uma candidata à função potencial:')
+    print(f)
+</script></div>
+<article class="exercise exercise-like" id="exercise-27"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-27"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">7.11</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-27"><article class="exercise exercise-like"><p id="p-159">Utilize o código acima para  encontrar candidatos a funções potenciais para os campos \(\vec{F} (x,y) = \frac{-x}{(x^2+y^2)^{3/2}}\vec{i} + \frac{-y}{(x^2+y^2)^{3/2}}\vec{j}\) e \(\vec{F} (x,y) = \frac{-y}{x^2+y^2}\vec{i} + \frac{x}{x^2+y^2}\vec{j}\text{.}\)</p>
+<p id="p-160">Em seguida utilize o código abaixo para calcular o valor das integrais desses campos em torno de uma circunferência de raio 1 ao redor da origem (orientada no sentido anti-horário).</p>
+<p id="p-161">Quais condições do <a class="xref" data-knowl="./knowl/Teorema_Campos_Conservativos.html" title="Teorema 7.6">Teorema 7.6</a> os campos não satisfazem?  Em que região do plano as funções candidatas a função potencial estão definidas?</p></article></div>
+<div class="sagecell-sage" id="sage-34"><script type="text/x-sage">var('x y t');
+a=0; b=2;
+from sage.symbolic.integration.integral import definite_integral
+r(t) = (1+cos(t*3.14159), 2*sin(t*3.14159))
+r1=diff(r,t,1);
+F(x,y)=(x,y)
+Fr=F(r[0],r[1]);
+Ftimesr1=Fr[0]*r1[0]+Fr[1]*r1[1]
+definite_integral(Ftimesr1(t),t,a,b)
+</script></div></section><section class="subsection" id="subsection-11"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">7.2</span> <span class="title">Conservação da Energia</span>
+</h3>
+<p id="p-162">Uma aplicação interessante na física do trabalho visto como uma integral de linha está na conservação da energia.</p>
+<p id="p-163">Suponha que um campo de forças \(\vec{F}(x,y,z)\) move um objeto de massa \(m\) ao longo  de uma trajetória \(\vec{r}:[a,b] \to \mathbb{R}^3\text{.}\) Pela segunda lei de Newton, \(\vec{F}(\vec{r}(t)) = m \vec{a}(t) = m \vec{r}''(t)\text{.}\) Então <a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-15" id="fn-15"><sup> 3 </sup></a></p>
+<div class="displaymath">
+\begin{align*}
+W = \amp \int_C \vec{F} \cdot d\vec{r} = \int_a^b \vec{F}(\vec{r}(t))\cdot \vec{r}'(t) dt \\
+= \amp \int_a^b m \vec{r}''(t)\cdot \vec{r}'(t) dt = \frac{m}{2}\int_a^b \frac{d}{dt}\|\vec{r}'(t)\|^2 dt \\
+= \amp \left. \frac{m}{2} \| \vec{v}(t) \|^2\right| _a^b= \frac{m}{2} \| \vec{v}(b) \|^2 - \frac{m}{2} \| \vec{v}(a) \|^2 = \mathbf{K}(B) - \mathbf{K}(A),
+\end{align*}
+</div>
+<p class="continuation">onde \(\mathbf{K}(B)\) e \(\mathbf{K}(A)\) são as energias cinéticas do corpo nos pontos \(B = \vec{r}(b)\) e \(A = \vec{r}(a)\text{,}\) respectivamente.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-15"><div class="fn">Se não entendeu a conta calcule \(\frac{d}{dt}\|\vec{r}'(t)\|^2 = \frac{d}{dt}\langle\vec{r}'(t), 
+\vec{r}'(t)\rangle \) utilizando a regra do produto.</div></div>
+<p id="p-164">Para um campo de forças conservativo \(\vec{F} = \nabla f\text{,}\) sua <dfn class="terminology">energia potencial</dfn> \(\mathbf{P}(x,y,z)\) é definida como o oposto da função potencial</p>
+<div class="displaymath">
+\begin{equation*}
+\mathbf{P}(x,y,z) =  - f(x,y,z).
+\end{equation*}
+</div>
+<p class="continuation">Então podemos calcular o trabalho para esse campo conservativo utilizando o Teorema Fundamental para campos conservativos obtendo</p>
+<div class="displaymath">
+\begin{align*}
+W = \amp \int_C \vec{F} \cdot d\vec{r} = \int_C \nabla f \cdot dr \\
+= \amp f(\vec{r}(b)) - f(\vec{r}(a)) = \mathbf{P}(A)-\mathbf{P}(B).
+\end{align*}
+</div>
+<p class="continuation">Como para os campos conservativos temos essas duas maneiras de calcular o trabalho, mas o trabalho é um só, elas devem prover o mesmo resultado</p>
+<div class="displaymath">
+\begin{align*}
+\mathbf{K}(B) - \mathbf{K}(A)  = W\amp = \mathbf{P}(A)-\mathbf{P}(B) \\
+\Longrightarrow \mathbf{K}(B) + \mathbf{P}(B)  = \amp \mathbf{K}(A)+\mathbf{P}(A).
+\end{align*}
+</div>
+<p class="continuation">Ou seja, a soma das energias potencial e cinética é a mesma no começo e no final da trajetória (e em qualquer ponto pelo qual aquela trajetória passe).</p></section></section></div></main>
+</div>
+</body>
+</html>

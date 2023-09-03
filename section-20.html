@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:54-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Representação de Funções como Séries de Potências. Séries de Taylor</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-19.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-21.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-19.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-21.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link active">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-20"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span>
+</h2>
+<section class="subsection" id="subsection-30"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">20.1</span> <span class="title">Representação de Funções como Séries de Potências.</span>
+</h3>
+<p id="p-349">Podemos utilizar a soma dos termos da P.G.:</p>
+<div class="displaymath">
+\begin{equation*}
+\sum_{n=0}^\infty x^n  = 1 + x + x^2 + x^3 +\cdots = \frac{1}{1-x}, \,\,\, |x| &lt;1,
+\end{equation*}
+</div>
+<p class="continuation">para representarmos funções racionais através de séries de potências, o que nos permitirá, entre outras coisas, integrá-las facilmente.</p>
+<article class="example example-like" id="example-33"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-33"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">20.1</span><span class="period">.</span><span class="space"> </span><span class="title">Funções Racionais.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-33"><article class="example example-like"><div class="displaymath">
+\begin{align*}
+\frac{2x-1}{x-4}= \amp (2x-1)\left(\frac{-1}{4-x}\right)= -\frac{2x-1}{4}\left(\frac{1}{1-x/4}\right)\\
+= \amp \frac{1-2x}{4}\left(1 + \frac{x}{4} + \frac{x^2}{4^2} + \frac{x^3}{4^3} +\cdots\right)\\
+= \amp \left(\frac{1}{4} + \frac{x}{4^2} + \frac{x^2}{4^3} + \frac{x^3}{4^4} +\cdots\right) -2 \left(\frac{x}{4} + \frac{x^2}{4^2} + \frac{x^3}{4^3} + \frac{x^4}{4^4} +\cdots\right)\\
+= \amp \frac{1}{4} + \left(\frac{1}{4^2}-\frac{2}{4}\right)x + \left(\frac{1}{4^3}-\frac{2}{4^2}\right)x^2 + \left(\frac{1}{4^4}-\frac{2}{4^3}\right)x^3 +\cdots\\
+= \amp \frac{1}{4} -\frac{7}{4^2} x -\frac{7}{4^3}x^2 -\frac{7}{4^3}x^3 +\cdots,
+\end{align*}
+</div>se \(|x| &lt; 4.\)</article></div>
+<p id="p-350">Visualizando as aproximações da função racional</p>
+<div class="sagecell-sage" id="sage-79"><script type="text/x-sage">var('x n')
+c(n)=-7/4**(n+1)
+g(x)= (2*x-1)/(x-4)
+p=plot(g(x),(x,-4,3.9),ymin=-20, ymax=2, color='black')
+p+=text("g(x)", (-4,0.5), color='black')
+for i in (1..5):
+    f(x) = 1/4
+    for j in (1..i):
+        f +=c(j)*x**(j)
+    p+=plot(f,(x,-4,3.9),ymin=-20, ymax=2,rgbcolor=hue(0.15*i))
+    p+=text("N=", (0.5*i,f(0.5*i)+0.5), rgbcolor=hue(0.15*i))
+    p+=text(i, (0.5*i+0.5,f(0.5*i)+0.5), rgbcolor=hue(0.15*i))
+show(p)
+</script></div>
+<p id="p-351">Podemos utilizar a soma da P.G. como uma estratégia para calcular divisões realizando apenas somas e multiplicações de inteiros e movendo casas decimais:</p>
+<div class="displaymath">
+\begin{align*}
+\frac{33}{7} = \amp \frac{33}{10} \frac{1}{0.7} = \frac{33}{10} \frac{1}{1-0.3} \\
+= \amp \frac{33}{10} \left( 1+ \frac{3}{10} + \frac{3^2}{10^2} + \frac{3^3}{10^3} +\cdots\right) \\
+= \amp \left( \frac{33}{10}+ \frac{99}{10^2} + \frac{297}{10^3} + \frac{891}{10^4} +\cdots\right) \\
+= \amp 3.3+0.99 + 0.297+ 0.0891 + 0.02673+\cdots \approx 4.70283
+\end{align*}
+</div>
+<article class="theorem theorem-like" id="Deriv_Int_Term"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">20.2</span><span class="period">.</span>
+</h6>
+<p id="p-352">Se uma série de potências</p>
+<div class="displaymath">
+\begin{equation*}
+\sum_{n=0}^\infty c_n (x-a)^n
+\end{equation*}
+</div>
+<p class="continuation">tiver um raio de convergência \(R &gt; 0\text{,}\) então a função \(f:(a-R,a+R)\to \mathbb{R}\text{,}\) definida por</p>
+<div class="displaymath">
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty c_n (x-a)^n = c_0 + c_1 (x-a) + c_2 (x-a)^2 + \cdots
+\end{equation*}
+</div>
+<p class="continuation">é diferenciável (e portanto contínua) e</p>
+<ol class="decimal">
+<li id="deriv_term_term"><p id="p-derived-deriv_term_term">\(f'(x)=c_1 + 2c_2(x-a) + 3c_3(x-a)^2 + \cdots = \sum_{n=1}^\infty nc_n (x-a)^{n-1}\text{,}\)</p></li>
+<li id="int_term_term"><p id="p-derived-int_term_term">\(\int f(x) dx = C + c_0 (x-a)+ \frac{c_1}{2} (x-a)^2 + \cdots = C + \sum_{n=0}^\infty c_n \frac{(x-a)^{n+1}}{n+1}\text{.}\)</p></li>
+</ol></article><article class="hiddenproof" id="proof-28"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-28"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-28"><article class="hiddenproof"><p id="p-353">Ainda não implementada.</p></article></div>
+<em class="alert">Resolva o exercício abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-54"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-54"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">20.3</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-54"><article class="exercise exercise-like"><p id="p-354">Utilize o <a class="xref" data-knowl="./knowl/Deriv_Int_Term.html" title="Teorema 20.2">Teorema 20.2</a> para encontrar séries de potências para \(f'(x) \) e \(\int_0^x f(\tilde{x}) d\tilde{x}\) para a função</p>
+<div class="displaymath">
+\begin{align*}
+f(x) = \frac{2x-1}{x-4}= \amp \frac{1}{4} -\frac{7}{4^2} x -\frac{7}{4^3}x^2 -\frac{7}{4^4}x^3 +\cdots
+\end{align*}
+</div>
+<p id="p-355">Calcule a derivada manualmente e utilize o código de Sagemath anterior para comparar suas aproximações com o gráfico de \(f'(x)\text{.}\)</p></article></div></section><section class="subsection" id="subsection-31"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">20.2</span> <span class="title">Séries de Taylor.</span>
+</h3>
+<p id="p-356">Suponha que uma função \(f:(a-R,a+R) \to \mathbb{R}\) pode ser escrita como uma série de potências centrada em \(a\) com raio de convergência \(R\text{:}\)</p>
+<div class="displaymath">
+\begin{equation*}
+f(x) = c_0 + c_1 (x-a) + c_2 (x-a)^2 + c_3 (x-a)^3 + \cdots 
+\end{equation*}
+</div>
+<p class="continuation">se aplicarmos a função em \(x=a\text{,}\) os temos em parênteses tornando-se todos zero e obtemos que</p>
+<div class="displaymath">
+\begin{equation*}
+c_0 = f(a).
+\end{equation*}
+</div>
+<p id="p-357">Derivando \(f\) termo a termo obtemos:</p>
+<div class="displaymath">
+\begin{equation*}
+f'(x) =  c_1 + 2c_2 (x-a) + 3c_3 (x-a)^2 + \cdots 
+\end{equation*}
+</div>
+<p class="continuation">e, aplicando a função em \(x=a\text{,}\) os temos em parênteses tornam-se todos zero e obtemos</p>
+<div class="displaymath">
+\begin{equation*}
+c_1 = f'(a).
+\end{equation*}
+</div>
+<p id="p-358">Repetindo esse processo \(n\) vezes, obtemos:</p>
+<div class="displaymath">
+\begin{equation*}
+f^{(n)}(x) =  n! c_n  + (n+1)n(n-1)\cdots 2 c_{n+1} (x-a) + (n+2)(n+1)n\cdots 3 c_{n+2} (x-a)^2 + \cdots 
+\end{equation*}
+</div>
+<p class="continuation">e, aplicando a função em \(x=a\text{,}\) os temos em parênteses tornam-se todos zero e obtemos</p>
+<div class="displaymath">
+\begin{equation*}
+c_n = \frac{f^{(n)}(a)}{n!}.
+\end{equation*}
+</div>
+<p id="p-359">Desse modo podemos calcular os coeficientes de uma série de potências<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-39" id="fn-39"><sup> 1 </sup></a> em torno de um ponto a, desde que possamos calcular as derivadas da função naquele ponto. Esse importante resultado nos permite escrever séries de potências para quaisquer funções de interesse.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-39"><div class="fn">Se for possível encontrar tal função.</div></div>
+<article class="theorem theorem-like" id="theorem-24"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">20.4</span><span class="period">.</span>
+</h6>
+<p id="p-360">Se uma função \(f\) tiver uma expansão em série de potências em torno de \(a\text{,}\) com raio de convergência \(R\text{,}\)</p>
+<div class="displaymath">
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty c_n (x-a)^n, \,\,\,\,\, |x-a| &lt; R,
+\end{equation*}
+</div>
+<p class="continuation">então seus coeficientes são dados por</p>
+<div class="displaymath">
+\begin{equation*}
+c_n = \frac{f^{(n)}(a)}{n!},
+\end{equation*}
+</div>
+<p class="continuation">para todo \(n \in \mathbb{N}\text{.}\)</p></article><article class="hiddenproof" id="proof-29"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-29"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-29"><article class="hiddenproof"><p id="p-361">Os argumentos para esse resultado foram apresentados antes do enunciado.</p></article></div>
+<p id="p-362">Dada uma função infinitamente diferenciável em uma ponto \(a \in D(f)\text{,}\) a qual não sabemos se pode ser expandida como uma série de potências, podemos considerar a série de potências cujos coeficientes são dados pelo teorema anterior.  Tal série é chamada de <dfn class="terminology">série de Taylor</dfn> da função (para o caso particular em que \(a=0\text{,}\) a série é chamada de Série de Maclaurin):</p>
+<div class="displaymath">
+\begin{equation*}
+\sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!} (x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2} (x-a)^2 + \frac{f'''(a)}{3!} (x-a)^3 + \cdots
+\end{equation*}
+</div>
+<p id="p-363">As somas dos \(n\) primeiros termos dessa série é um polinômio \(T_n(x)\text{,}\) chamado de <dfn class="terminology">Polinômio de Taylor de grau \(n\) de \(f\) em \(a\)</dfn>, que pode ser utilizado para aproximar a função em uma vizinhança de \(a\text{.}\)</p>
+<em class="alert">Resolva o exercício abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-55"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-55"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">20.5</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-55"><article class="exercise exercise-like"><p id="p-364">Escreva os polinômios de Taylor de graus 1,2 e 3 que aproximem :</p>
+<ol class="decimal">
+<li id="li-102"><p id="p-derived-li-102">\(f(x)= \mbox{sen} (x)\) em \(a=0\) e utilize o código abaixo para plotar suas aproximações;</p></li>
+<li id="li-103"><p id="p-derived-li-103">\(f(x)= \mbox{sen} (x)\)  em \(a=\pi/4\) e utilize o código abaixo para plotar suas aproximações;</p></li>
+<li id="li-104"><p id="p-derived-li-104">\(g(x)= e^x\) em \(a=0\) e utilize o código abaixo para plotar suas aproximações;</p></li>
+<li id="li-105"><p id="p-derived-li-105">\(g(x)= e^x\) em \(a=1\) e utilize o código abaixo para plotar suas aproximações.</p></li>
+</ol></article></div>
+<p id="p-365">Visualizando aproximações do sen(x).</p>
+<div class="sagecell-sage" id="sage-80"><script type="text/x-sage">var('x n')
+c(n)=(-1)**(n)/factorial(2*n+1)
+f(x)= sin(x)
+p=plot(f(x),(x,-3,3),ymin=-2, ymax=2, color='black')
+p+=text("sen(x)", (-2,0.5), color='black')
+for i in (0..4):
+    h(x) = 0
+    for j in (0..i):
+        h +=c(j)*x**(2*j+1)
+    p+=plot(h,(x,-3,3),ymin=-2, ymax=2,rgbcolor=hue(0.15*i))
+    p+=text("N=", (0.2*i,h(0.2*i)+0.5), rgbcolor=hue(0.15*i))
+    p+=text(2*i+1, (0.2*i+0.5,h(0.2*i)+0.5), rgbcolor=hue(0.15*i))
+show(p)
+</script></div>
+<p id="p-366">Mas será que a série de Taylor realmente aproxima a função original? A desigualdade de Taylor permite estimarmos quão boa é nossa aproximação, ou seja, garantimos que <dfn class="terminology">o erro</dfn>, \(R_n(x)=f(x) - T_n(x)\text{,}\) é menor do que determinado valor, mesmo sem sabermos o valor exato da soma.</p>
+<article class="theorem theorem-like" id="theorem-25"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">20.6</span><span class="period">.</span><span class="space"> </span><span class="title">(Desigualdade) de Taylor.</span>
+</h6>
+<p id="p-367">Se \(|f^{(n+1)}(x)| \leq M\) para \(|x-a| \leq d\text{,}\) então o resto \(R_n(x)\) da série de Taylor satisfaz a desigualdade</p>
+<div class="displaymath">
+\begin{equation*}
+|R_n(x)|\leq \frac{M}{(n+1)!}|x-a|^{n+1}, \,\,\, \forall x \mbox{ tal que } |x-a| \leq d.
+\end{equation*}
+</div></article><article class="hiddenproof" id="proof-30"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-30"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-30"><article class="hiddenproof"><p id="p-368">Ainda não implementada.</p></article></div>
+<article class="example example-like" id="example-34"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-34"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">20.7</span><span class="period">.</span><span class="space"> </span><span class="title">Estimando o erro na série de Taylor.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-34"><article class="example example-like"> A função<div class="displaymath">
+\begin{equation*}
+f(x)= x^{2/3},
+\end{equation*}
+</div>tem derivadas de ordens 1,2 e 3 iguais a:<div class="displaymath">
+\begin{align*}
+\amp f'(x)= \frac{2}{3} x^{-1/3}\\
+\amp f''(x)= \frac{-2}{9} x^{-4/3}\\
+\amp f^{(3)}(x)= \frac{8}{27}x^{-7/3}
+\end{align*}
+</div>e o poliômio de Taylor de grau 2, centrado em \(a=1\text{,}\)<div class="displaymath">
+\begin{equation*}
+p(x) =  1 +\frac{2}{3} (x-1)  - \frac{2}{9} (x-1)^2
+\end{equation*}
+</div>pode ser utilizado para aproximar \(f(x)\) no intervalo \([0.5,1.5]\) com erro menor do que<div class="displaymath">
+\begin{equation*}
+|R_n(x)|\leq  \frac{8}{27}0.5^{-7/3}\frac{1}{3!}|x-1|^{3} \leq \frac{8}{27}0.5^{-7/3}\frac{1}{3!}0.5^{3} \leq 0.032
+\end{equation*}
+</div></article></div>
+<em class="alert">Resolva o exercício abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-56"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-56"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">20.8</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-56"><article class="exercise exercise-like"><p id="p-369">Utilize o Teorema de Taylor para encontrar uma estimativa  para o erro na aproximação dos polinômios de Taylor de grau 5 das funções a seguir no intervalo \((-2,2)\) :</p>
+<ol class="decimal">
+<li id="li-106"><p id="p-derived-li-106">\(f(x)= \mbox{sen} (x)\) em \(a=0\) e utilize o código abaixo para plotar suas aproximações;</p></li>
+<li id="li-107"><p id="p-derived-li-107">\(g(x)= e^x\) em \(a=0\) e utilize o código abaixo para plotar suas aproximações.</p></li>
+</ol></article></div></section></section></div></main>
+</div>
+</body>
+</html>

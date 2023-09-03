@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:54-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Exemplos de Funções Complexas</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-22.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-24.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-22.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-24.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link active">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-23"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span>
+</h2>
+<section class="subsection" id="subsection-35"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">23.1</span> <span class="title">A função exponencial</span>
+</h3>
+<p id="p-398">A função exponencial na variável complexa \(z=x+iy\) é definida, utilizando a fórmula de Euler, por</p>
+<div class="displaymath">
+\begin{equation*}
+e^z:=e^xe^{iy}=e^x(\mbox{cos}(y)+i \mbox{sen}(y)).
+\end{equation*}
+</div>
+<p class="continuation">Seu plot (como uma função complexa) é <div class="sagecell-sage" id="sage-90"><script type="text/x-sage">f(z) = e**z
+complex_plot(f, (-30, 30), (-30, 30))
+</script></div></p>
+<p id="p-399">Também podemos plotar as partes real, \(u(x,y)=e^x\mbox{cos}(y)\text{,}\) <div class="sagecell-sage" id="sage-91"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=e**z
+plot3d(f.real(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p>
+<p id="p-400">e imaginária,\(v(x,y)=e^x\mbox{sen}(y)\text{.}\) <div class="sagecell-sage" id="sage-92"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=e**z
+plot3d(f.imag(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p>
+<p id="p-401">Então sua derivada é \(f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = e^x\mbox{cos}(y) + i e^x\mbox{sen}(y) = e^z.\)</p>
+<article class="exercise exercise-like" id="exercise-59"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-59"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">23.1</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-59"><article class="exercise exercise-like"><p id="p-402">Utilize a equação \(3^z=e^{\ln 3^z} = e^{z\ln 3}\text{,}\) escreva as partes reais e imaginárias de \(3^z\) e calcule sua derivada. Em seguida plote a função complexa e suas partes real e imaginária.</p></article></div></section><section class="subsection" id="subsection-36"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">23.2</span> <span class="title">Funções trigonométricas</span>
+</h3>
+<p id="p-403">A fórmula de Euler aplicada em \(x\) e \(-x\text{,}\) \(x \in \mathbb{R}\text{,}\) produz</p>
+<div class="displaymath">
+\begin{align*}
+e^{ix}= \amp\mbox{cos}(x) + i \mbox{sen}(x),\\
+e^{-ix}= \amp\mbox{cos}(x) - i \mbox{sen}(x),
+\end{align*}
+</div>
+<p class="continuation">de modo que podemos obter</p>
+<div class="displaymath">
+\begin{align*}
+\mbox{cos}(x)= \amp \frac{e^{ix} + e^{-ix}}{2},\\
+\mbox{sen}(x)= \amp \frac{e^{ix} - e^{-ix}}{2i},
+\end{align*}
+</div>
+<p class="continuation">o que nos motiva a definir, para \(z \in \mathbb{C}\text{,}\)</p>
+<div class="displaymath">
+\begin{align*}
+\mbox{cos}(z):= \amp \frac{e^{iz} + e^{-iz}}{2},\\
+\mbox{sen}(z):= \amp \frac{e^{iz} - e^{-iz}}{2i}.
+\end{align*}
+</div>
+<p class="continuation">O plot do cosseno (como uma função complexa) é <div class="sagecell-sage" id="sage-93"><script type="text/x-sage">f(z) = cos(z)
+complex_plot(f, (-10, 10), (-10, 10))
+</script></div></p>
+<p id="p-404">Também podemos plotar as partes real do cosseno, \(u(x,y)=\mbox{cosh}(y)\mbox{cos}(x)\text{,}\) <div class="sagecell-sage" id="sage-94"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=cos(z)
+plot3d(f.real(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p>
+<p id="p-405">e imaginária do cosseno,\(v(x,y)=-\mbox{sinh}(y)\mbox{sen}(x)\text{.}\) <div class="sagecell-sage" id="sage-95"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=cos(z)
+plot3d(f.imag(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p>
+<p id="p-406">Então a derivada do cosseno é \(f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} =-\mbox{cosh}(y)\mbox{sen}(x) - i\mbox{senh}(y)\mbox{cos}(x) = -\mbox{sen}(z).\)</p>
+<article class="exercise exercise-like" id="exercise-60"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-60"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">23.2</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-60"><article class="exercise exercise-like"><p id="p-407">Verifique que \(\mbox{sen}(z)=\mbox{cosh}(y)\mbox{sen}(x) + i\mbox{senh}(y)\mbox{cos}(x) \) e calcule sua derivada. Em seguida plote a função complexa e suas partes real e imaginária.</p></article></div></section><section class="subsection" id="subsection-37"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">23.3</span> <span class="title">Funções trigonométricas hiperbólicas</span>
+</h3>
+<p id="p-408">Assim como para números reais, definimos, para \(z \in \mathbb{C}\text{,}\)</p>
+<div class="displaymath">
+\begin{align*}
+\mbox{cosh}(z):= \amp \frac{e^{z} + e^{-z}}{2},\\
+\mbox{senh}(z):= \amp \frac{e^{z} - e^{-z}}{2}.
+\end{align*}
+</div>
+<p class="continuation">O plot do cosseno (como uma função complexa) é <div class="sagecell-sage" id="sage-96"><script type="text/x-sage">f(z) = cosh(z)
+complex_plot(f, (-10, 10), (-10, 10))
+</script></div></p>
+<p id="p-409">Também podemos plotar as partes real do cosseno hiperbólico, \(u(x,y)=\mbox{cosh}(x)\mbox{cos}(y)\text{,}\) <div class="sagecell-sage" id="sage-97"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=cosh(z)
+plot3d(f.real(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p>
+<p id="p-410">e imaginária do cosseno, \(v(x,y)=\mbox{senh}(x)\mbox{sen}(y)\text{.}\) <div class="sagecell-sage" id="sage-98"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=cosh(z)
+plot3d(f.imag(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p>
+<p id="p-411">Então a derivada do cosseno hiperbólico é \(f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} =\mbox{senh}(y)\mbox{cos}(y) + i\mbox{cosh}(x)\mbox{sen}(x) = \mbox{senh}(z).\)</p>
+<article class="exercise exercise-like" id="exercise-61"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-61"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">23.3</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-61"><article class="exercise exercise-like"><p id="p-412">Verifique que \(\mbox{senh}(z)=\mbox{senh}(x)\mbox{cos}(y) + i\mbox{cosh}(x)\mbox{sen}(y) \) e calcule sua derivada. Em seguida plote a função complexa e suas partes real e imaginária.</p></article></div></section><section class="subsection" id="subsection-38"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">23.4</span> <span class="title">Função logarítmica complexa</span>
+</h3>
+<p id="p-413">A função logarítmica complexa é definida como a função inversa da exponencial, de modo que, para \(z \in \mathbb{C}\text{,}\)</p>
+<div class="displaymath">
+\begin{align*}
+w = \ln (z) \amp \,\,\, \Leftrightarrow \,\,\, e^w = z.
+\end{align*}
+</div>
+<p class="continuation">Podemos obter uma expressão para \(w\) escrevendo \(z\) na forma polar, \(z=r e^{i\theta}\text{,}\) e observando que para qualquer \(w = \ln(r) + i(\theta + n2\pi)\text{,}\) obtemos</p>
+<div class="displaymath">
+\begin{equation*}
+e^w  = e^{\ln(r) + i(\theta +n 2\pi)} = e^{\ln(r)}e^{i(\theta + n2\pi)} = r e^{i\theta} =z.
+\end{equation*}
+</div>
+<p class="continuation">Isso significa que a função logarítmica complexa é <dfn class="terminology">multivalorada</dfn>, isto é, precisamos determinar em que intervalo de comprimento \(2\pi\) o número \(\theta\) se encontra. Para \(\theta \in [-\pi,\pi)\) temos <div class="sagecell-sage" id="sage-99"><script type="text/x-sage">f(z) = log(z)
+complex_plot(f, (-1, 1), (-1, 1))
+</script></div></p>
+<p id="p-414">Para uma função expressa em coordenadas polares é mais fácil plotar a parte real da função em coordenadas cilindricas, observando que \(Re(\ln(z)) = \ln(r)\) <div class="sagecell-sage" id="sage-100"><script type="text/x-sage">T = Cylindrical('height', ['radius', 'azimuth'])
+r, theta, z = var('r theta z')
+T.transform(radius=r, azimuth=theta, height=z)
+plot3d(log(r), (r, 0, 3), (theta, 0, 2*pi), transformation=T)
+</script></div></p>
+<p id="p-415">Para uma função expressa em coordenadas polares é mais fácil plotar a parte imaginária da função em coordenadas cilindricas, observando que \(Im(\ln(z)) = \theta\) <div class="sagecell-sage" id="sage-101"><script type="text/x-sage">T = Cylindrical('height', ['radius', 'azimuth'])
+r, theta, z = var('r theta z')
+T.transform(radius=r, azimuth=theta, height=z)
+plot3d(theta, (r, 0, 3), (theta, 0, 4*pi), transformation=T)
+</script></div></p>
+<p id="p-416">Para escrevermos a derivada da função logarítmica podemos usar as equações de Cauchy-Riemann em coordenadas polares ou passar a função logarítmica para coordenadas cartesianas. Na segunda opção temos \(u(x,y)=\log(r) = \log(\sqrt{x^2+y^2})\) e \(v(x,y) = \theta = \arctan\left(\frac{y}{x}\right)\text{,}\) de modo que \(f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} =\frac{x}{x^2+y^2} - i\frac{y}{x^2+y^2}= \frac{1}{z}.\)</p>
+<article class="exercise exercise-like" id="exercise-62"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-62"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">23.4</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-62"><article class="exercise exercise-like"><p id="p-417">Efetue o cálculo das derivadas parciais na direção \(x\) da parte real e da parte imaginária da função logarítmica e verifique que \(f'(z)=1/z\text{.}\) Em seguida plote a função complexa e suas partes real e imaginária.</p></article></div></section></section></div></main>
+</div>
+</body>
+</html>

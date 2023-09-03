@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:52-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Integrais de funções escalares.</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-4.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-6.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-4.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-6.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link active">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-5"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span>
+</h2>
+<section class="subsection" id="subsection-5"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">5.1</span> <span class="title">Integral em relação ao comprimento de arco.</span>
+</h3>
+<p id="p-100">Vamos considerar a situação que pode representar a área de uma cerca ou cortina com altura variável definida sobre uma curva plana \(C\text{,}\) como na simulação a abaixo:</p>
+<div class="sagecell-sage" id="sage-23"><script type="text/x-sage">var('u v')
+parametric_plot3d([-sin(u), u,0.1*u*v], (u, 0, 6), (v, 0, 6))
+</script></div>
+<p id="p-101">Se a altura da "cerca" é dada por uma função \(f(x,y) \geq 0 \) e a curva plana \(C\) é parametrizada pela função vetorial \(\vec{r} :  [a,b] \to \mathbb{R}^2,\) \(\vec{r} (t) = (x(t),y(t))\text{,}\) podemos particionar o intervalo \([a,b]\text{,}\) com \(t_0=a \lt t_1 \lt t_2  \lt \cdots \lt t_n=b \) e aproximar sua área pela soma das áreas  dos polígonos definidos pelos pontos da partição (na figura \(P0, \, P1, \, P2\,\) e \(P3\)).</p>
+<figure class="figure figure-like" id="figure-3"><div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;"><img src="images/Integral_Funcao_sobre_Curva.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">5.1<span class="period">.</span></span><span class="space"> </span>Poliedro aproximando a área acima da curva \(C\) e abaixo de uma função \(f(x,y).\)</figcaption></figure><div class="sagecell-sage" id="sage-24"><script type="text/x-sage">var('u v')
+r=(-sin(u),u) # Parametrização da curva C
+S=parametric_plot3d([r[0], r[1],0.1*u*v], (u, 0, 6), (v, 0, 6),plot_points=[10,1], color='yellow', mesh = True)
+P0=text3d("P0", (r[0](4*6/9)+0.2,r[1](4*6/9)-0.1,0))
+P1=text3d("P1", (r[0](4*6/9)+0.2,r[1](4*6/9)-0.1,1.7))
+P2=text3d("P2", (r[0](5*6/9)+0.2,r[1](5*6/9)-0.1,0))
+P3=text3d("P3", (r[0](5*6/9)+0.2,r[1](5*6/9)-0.1,2.1))
+Ai=text3d("Ai", (r[0](4.5*6/9)+0.2,r[1](4.5*6/9)-0.1,1))
+S+P0+P1+P2+P3+Ai
+</script></div>
+<p id="p-102">Note que as coordenadas dos pontos são</p>
+<div class="displaymath">
+\begin{align*}
+P0\amp=(x(t_i),y(t_i),0),\\
+P1\amp=(x(t_i),y(t_i),f(x(t_i),y(t_i))),\\
+P2\amp=(x(t_{i+1}),y(t_{i+1}),0),\\
+P3\amp=(x(t_{i+1}),y(t_{i+1}),f(x(t_{i+1}),y(t_{i+1}))),
+\end{align*}
+</div>
+<p class="continuation">de modo que a base \(b_i\) do poligono (trapézio retângulo) \(A_i\) mede</p>
+<div class="displaymath">
+\begin{equation*}
+b_i=\sqrt{(x(t_{i+1})-x(t_{i}))^2+(y(t_{i+1})-y(t_{i}))^2}= \| r(t_{i+1})- r(t_i) \|
+\end{equation*}
+</div>
+<p class="continuation">e sua altura média \(h_i\)</p>
+<div class="displaymath">
+\begin{equation*}
+h_i=\frac{f(r(t_{i+1}))+f(r(t_{i}))}{2}.
+\end{equation*}
+</div>
+<p id="p-103">Assim a área do poligono \(A_i\text{,}\) que também denotaremos \(A_i \) é de</p>
+<div class="displaymath">
+\begin{equation*}
+A_i=b_i \times h_i= \frac{f( \vec{r}(t_{i+1}))+f(r(t_{i}))}{2}  \|  \vec{r}(t_{i+1})-  \vec{r}(t_i) \|
+\end{equation*}
+</div>
+<p class="continuation">e a área abaixo da "cerca" pode ser aproximada por:</p>
+<div class="displaymath">
+\begin{align*}
+A\approx \amp \sum_{i=0}^n \frac{f( \vec{r}(t_{i+1}))+f( \vec{r}(t_{i}))}{2} \left\|  \vec{r}(t_{i+1})-  \vec{r}(t_i) \right\|\\
+\approx\amp \sum_{i=0}^n \frac{f( \vec{r}(t_{i+1}))+f( \vec{r}(t_{i}))}{2} \left\| \frac{ \vec{r}(t_i+\Delta t)-  \vec{r}(t_i)}{\Delta t} \right\|\Delta t
+\end{align*}
+</div>
+<p class="continuation">Ao fazermos o número de pontos da partição de \([a,b]\) tender ao infinito esperamos obter um valor que corresponda a área da cerca:</p>
+<div class="displaymath">
+\begin{equation*}
+A= \int_a^b f(r(t)) \left\|  \vec{r}'(t)\right\| dt
+\end{equation*}
+</div>
+<p class="continuation">e isso nos motiva a definir:</p>
+<article class="definition definition-like" id="definition-9"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">5.2</span><span class="period">.</span>
+</h6>
+<p id="p-104">Se \(f:D \subset \mathbb{R}^2 \to \mathbb{R}\) é uma função contínua definida para todos os pontos de uma curva lisa \(C\text{,}\) parametrizada por \(r:[a,b] \to D \subset \mathbb{R}^2 \text{,}\) \(\vec{r}(t)=(x(t),y(t))\text{,}\) então a <dfn class="terminology">integral de linha</dfn> (em relação ao comprimento de arco) de \(f\) sobre \(C\) é</p>
+<div class="displaymath">
+\begin{align*}
+\int_C f(x,y)ds \amp := \int_a^b f(x(t),y(t)) \sqrt{(x'(t))^2+(y'(t))^2}dt\\
+\amp=\int_a^b f(x(t),y(t)) \| \vec{r}'(t)\|dt.
+\end{align*}
+</div></article><article class="example example-like" id="example-8"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-8"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">5.3</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-8"><article class="example example-like"><p id="p-105">Seja \(C\) a metade superior do círculo de raio 3 parametrizada por \(\vec{r}(t) = (3\cos(t),3\sin(t))\text{,}\) \(t \in [0, \pi]\text{.}\) Vamos calcular</p>
+<div class="displaymath">
+\begin{equation*}
+\int_C 2+xy ds.
+\end{equation*}
+</div>
+<p class="continuation">Primeiro calculamos</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}'(t) = (-3\sin(t), 3 \cos(t)),
+\end{equation*}
+</div>
+<p class="continuation">e</p>
+<div class="displaymath">
+\begin{equation*}
+\| \vec{r}'(t)\| = 3,
+\end{equation*}
+</div>
+<p class="continuation">assim</p>
+<div class="displaymath">
+\begin{align*}
+\int_C 2+xy ds = \amp \int_0^\pi (2 + 9 \cos(t)\sin(t))3 dt\\
+= \amp \int_0^\pi (6 + 27 \cos(t)\sin(t)) dt\\
+= \amp \left. 6t + \frac{27}{2} \sin^2(t)\right|_0^\pi = 6\pi
+\end{align*}
+</div></article></div>
+<article class="example example-like" id="example-9"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-9"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">5.4</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-9"><article class="example example-like"><p id="p-106">Seja \(C\) o arco da parábola \(y=x^2 \) entre \((0,0)\) e \((2,4)\)Vamos calcular</p>
+<div class="displaymath">
+\begin{equation*}
+\int_C 2x ds.
+\end{equation*}
+</div>
+<p class="continuation">Primeiro precisamos parametrizar a curva, o que pode ser feito através de</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}(t) = (t,t^2), \,\,\, t \in [0, 2]
+\end{equation*}
+</div>
+<p class="continuation">de modo que</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}'(t) = (1,2t),
+\end{equation*}
+</div>
+<p class="continuation">e</p>
+<div class="displaymath">
+\begin{equation*}
+\| \vec{r}'(t)\| = \sqrt{1+4t^2}.
+\end{equation*}
+</div>
+<p class="continuation">Assim</p>
+<div class="displaymath">
+\begin{align*}
+\int_C 2x ds = \amp \int_0^2 2t\sqrt{1+4t^2} dt\\
+= \amp \int_1^{17} \frac{1}{4} \sqrt{u} du\\
+= \amp \left. \frac{1}{6} u^{3/2}\right|_1^{17} =\frac{17^{3/2}-1}{6}
+\end{align*}
+</div></article></div>
+<article class="remark remark-like" id="remark-14"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">5.5</span><span class="period">.</span>
+</h6>Se a curva \(C\) é <em class="emphasis">lisa por partes</em>, ou seja, é formada unindo, o ponto final de uma com o ponto inicial da próxima, curvas lisas \(C_1, C_2, \ldots, C_n\text{,}\) então podemos calcular as integrais de linha sobre \(C\) somando as integrais sobre \(C_1, C_2, \ldots, C_n\text{:}\)<div class="displaymath">
+\begin{equation*}
+\int_C f(x,y)ds=\int_{C_1} f(x,y)ds+\cdots+\int_{C_1} f(x,y)ds.
+\end{equation*}
+</div></article><p id="p-107">O código abaixo ilustra uma curva lisa por partes, formada pela união de outras duas curvas \(C_1,\) e \(C_2\text{,}\) em púrpura e verde, respectivamente. As flechas indicam a <dfn class="terminology">orientação</dfn> ou o sentido em que as curvas estão sendo percorridas.</p>
+<div class="sagecell-sage" id="sage-25"><script type="text/x-sage">t = var('t');
+r1(t)=(1.5*t*sin(t/2), t*cos(t/2));
+r2(t)=(1.5*3.14159*sin(3.14159/2)+t, 0.33*t^2);
+C1=parametric_plot(r1(t), (t,0,3.14159),color=hue(0.8))
+P1=arrow(r1(2),r1(2.1),color=hue(0.8),width=0.2) #direção indicada pela parametrização
+C2=parametric_plot(r2(t), (t,0,3),color=hue(0.3))
+P2=arrow(r2(2),r2(2.1),color=hue(0.3),width=0.2) #direção indicada pela parametrização
+C1+P1+C2+P2
+</script></div>
+<em class="alert">Clique e resolva os exercícios  abaixo antes de prosseguir. Verifique suas respostas com o  código no final da subseção.</em><article class="exercise exercise-like" id="exercise-14"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-14"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">5.6</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-14"><article class="exercise exercise-like"><p id="p-108">Seja \(C\) o segmento unindo o ponto \((0, 1, 2)\) ao ponto \((3, 2, 9)\text{.}\) Calcule</p>
+<div class="displaymath">
+\begin{equation*}
+\int_C (x+y)z ds.
+\end{equation*}
+</div></article></div>
+<article class="exercise exercise-like" id="exercise-15"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-15"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">5.7</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-15"><article class="exercise exercise-like"><p id="p-109">Seja \(C\) o arco da parábola \(y=x^2\) (no plano), \(0 \leq x \leq 5\text{.}\) Calcule</p>
+<div class="displaymath">
+\begin{equation*}
+\int_C \sqrt{y} ds.
+\end{equation*}
+</div></article></div>
+<article class="remark remark-like" id="remark-15"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">5.8</span><span class="period">.</span>
+</h6>Se \(\rho (x,y)\) dá a densidade linear ao longo de uma curva \(C\) parametrizada por \(\vec{r}(t)\) então a massa no intervalo \([t_i, t_{i+1}]\) pode ser aproximada pelo comprimento do segmento unindo \(\vec{r}(t_i)\) e \(\vec{r}(t_{i+1})\) vezes uma amostra da densidade linear em algum ponto do intervalo \(\rho (r(t_i^*))\text{.}\) Assim a massa total pode ser aproximada por<div class="displaymath">
+\begin{equation*}
+M \approx \sum_{i=0}^n \rho( \vec{r}(t_i^*))\left\|  \vec{r}(t_{i+1})- r(t_i)\right\|,
+\end{equation*}
+</div>que, ao multiplicarmos e dividirmos por \(\Delta t\text{,}\) a massa deve convergir para<div class="displaymath">
+\begin{equation*}
+M=\int_C \rho(x,y)ds 
+\end{equation*}
+</div></article><article class="exercise exercise-like" id="exercise-16"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-16"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">5.9</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-16"><article class="exercise exercise-like"><p id="p-110">Calcule a massa de um arame, de espessura variante, no formato da circunferência \(x^2+y^2=4\) com densidade linear \(\rho (x,y) = (2+x)(2+y)\text{.}\)</p></article></div> Verifique as respostas obtidas com o código abaixo. <div class="sagecell-sage" id="sage-26"><script type="text/x-sage">var('x y z t');
+a=0; b=3;
+from sage.symbolic.integration.integral import definite_integral
+r(t)=(cos(t/4), sin(t/4), 5*t);
+f(x,y,z) = x+y+z
+r1=diff(r,t,1);
+norm=simplify((r1(t)).norm())
+definite_integral(f(r[0],r[1],r[2])*norm,t,a,b)
+</script></div></section><section class="subsection" id="subsection-6"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">5.2</span> <span class="title">Outras integrais de linha.</span>
+</h3>
+<p id="p-111">Também utilizaremos integrais de linha em relação apenas a uma das variáveis, cuja motivação só ficará clara quando fizermos integrais de campos vetoriais.</p>
+<article class="definition definition-like" id="definition-10"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">5.10</span><span class="period">.</span>
+</h6>
+<p id="p-112">Se \(f:D \subset \mathbb{R}^2 \to \mathbb{R}\) é uma função contínua definida para todos os pontos de uma curva lisa \(C\text{,}\) parametrizada por \(\vec{r}:[a,b] \to \mathbb{R}^2 \text{,}\) \(\vec{r}(t)=(x(t),y(t))\text{,}\) então as <dfn class="terminology">integrais de linha</dfn> em relação a \(x\) e \(y\) de \(f\) sobre \(C\) são definidas como</p>
+<div class="displaymath">
+\begin{align*}
+\int_C f(x,y)dx \amp := \int_a^b f(x(t),y(t)) x'(t)dt,\\
+\int_C f(x,y)dy \amp := \int_a^b f(x(t),y(t)) y'(t)dt.
+\end{align*}
+</div>
+<p class="continuation">Também denotaremos, para duas funções \(P,Q:D \subset \mathbb{R}^2 \to \mathbb{R}\)</p>
+<div class="displaymath">
+\begin{align*}
+\int_C P(x,y)dx+ Q(x,y) dy \amp := \int_C P(x,y)dx+ \int_C Q(x,y) dy.
+\end{align*}
+</div></article><article class="remark remark-like" id="remark-16"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">5.11</span><span class="period">.</span>
+</h6>Se a curva \(C\) é <em class="emphasis">lisa por partes</em>, ou seja, é formada unindo, o ponto final de uma com o ponto inicial da próxima, curvas lisas \(C_1, C_2, \ldots, C_n\text{,}\) então podemos calcular as integrais de linha sobre \(C\) somando as integrais sobre \(C_1, C_2, \ldots, C_n\text{.}\)</article><article class="example example-like" id="example-10"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-10"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">5.12</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-10"><article class="example example-like"><p id="p-113">Seja \(C\) o arco da parábola \(x=3+2y^2\) entre os pontos \((11,-2)\) e \((5,1)\text{.}\) Vamos calcular</p>
+<div class="displaymath">
+\begin{equation*}
+\int_C  y^3 dx + 3xy dy.
+\end{equation*}
+</div>
+<p class="continuation"><figure class="figure figure-like" id="figure-4"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="images/Exemplo_Integrais_Linha.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">5.13<span class="period">.</span></span><span class="space"> </span>Arco da parábola \(x=3+2y^2\)</figcaption></figure> Primeiro precisamos parametrizar a curva, o que pode ser feito fazendo \(y=t\text{:}\)</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}(t) = (3+2t^2, t), \,\,\, t \in [-2,1]
+\end{equation*}
+</div>
+<p class="continuation">de modo que</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}'(t) = (4t, 1),
+\end{equation*}
+</div>
+<p class="continuation">portanto \(x'(t) = 4t\) e \(y'(t) = 1\) e</p>
+<div class="displaymath">
+\begin{align*}
+\int_C  y^3 dx + 3xy dy = \amp \int_{-2}^1 t^3 4t dt+\int_{-2}^1 3(3+2t^2)t 1 dt\\
+= \amp \left. \frac{4}{5}t^5 + \frac{9}{2} t^2 +\frac{3}{2} t^4 \right|_{-2}^1
+\end{align*}
+</div></article></div>
+<article class="remark remark-like" id="remark-17"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">5.14</span><span class="period">.</span>
+</h6>
+<p id="p-114">Uma parametrização lisa \(\vec{r}:[a,b] \to \mathbb{R}^3\) dá uma <dfn class="terminology">orientação</dfn> para a curva \(C\) de acordo com os valores crescentes de \(t\text{.}\) Essa parametrização inicia em \(\vec{r}(a)\) e termina em \(\vec{r}(b)\text{.}\)</p>
+<p id="p-115">Podemos reverter a orientação de \(C\text{,}\) percorrendo a curva no sentido contrário (iniciando em \(\vec{r}(b)\) e terminando em \(\vec{r}(a)\)). Denotamos por \(-C\) à curva C dotada da orientação contrária. Dada uma parametrização lisa  \(\vec{r}:[a,b] \to \mathbb{R}^3\) da curva \(C\text{,}\) podemos obter uma parametrização explícita com a orientação contrária definindo</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{q}:[-b,-a] \to \mathbb{R}^3
+\end{equation*}
+</div>
+<div class="displaymath">
+\begin{equation*}
+\vec{q}(t)=\vec{r}(-t).
+\end{equation*}
+</div></article><p id="p-116">O código abaixo ilustra a orientação inicial de uma curva lisa \(C\) em púrpura e sua orientação contrária em verde.</p>
+<div class="sagecell-sage" id="sage-27"><script type="text/x-sage">t = var('t');
+r1(t)=(1.5*t*sin(t/2), t*cos(t/2)+0.01); #adicionei 0.01 para melhor visualizar as curvas
+r2(t)=(-1.5*t*sin(-t/2), -t*cos(-t/2)-0.01); #subtraí 0.01 para melhor visualizar as curvas
+C1=parametric_plot(r1(t), (t,0,3.14159),color=hue(0.8))
+P1=arrow(r1(2),r1(2.1),color=hue(0.8),width=0.2) #direção indicada pela parametrização
+C2=parametric_plot(r2(t), (t,-3.14159,0),color=hue(0.3))
+P2=arrow(r2(-1.1),r2(-1),color=hue(0.3),width=0.2) #direção indicada pela parametrização
+C1+P1+C2+P2
+</script></div>
+<article class="remark remark-like" id="remark-18"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">5.15</span><span class="period">.</span>
+</h6>A integral de linha de um campo escalar em relação ao comprimento de arco não depende da parametrização escolhida (pode-se mostrar de modo análogo ao realizado em sala para o comprimento de uma curva), ou seja<div class="displaymath">
+\begin{equation*}
+\int_C  f(x,y) ds = \int_{-C}  f(x,y) ds.
+\end{equation*}
+</div>Contudo as integrais de linha em relação a \(x\) e \(y\) mudam de sinal se invertermos a orientação da curva, mas tem o mesmo valor se escolhermos duas orientações com a mesma orientação. Se \(C\) tiver determinada orientação, denotamos \(-C\) alguma parametrização de orientação contrária e pode-se mostrar que<div class="displaymath">
+\begin{align*}
+\int_C  f(x,y) dx = \amp -\int_{-C}  f(x,y) dx\\
+\int_C  f(x,y) dy = \amp -\int_{-C}  f(x,y) dy
+\end{align*}
+</div></article><em class="alert">Clique e resolva os exercícios   abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-17"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-17"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">5.16</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-17"><article class="exercise exercise-like"><p id="p-117">Seja \(C\) o segmento unindo o ponto \((0, 1, 0)\) ao ponto \((-1, 2, 1)\text{.}\) Parametrize \(C\text{,}\) encontre uma parametrização para \(-C\) e calcule</p>
+<div class="displaymath">
+\begin{align*}
+a) \amp \int_C x dx+ ydy +z dz \\
+b) \amp\int_{-C} x dx + y dy + z dz \\
+c) \amp\int_C x ds \\
+d) \amp\int_{-C} x ds 
+\end{align*}
+</div></article></div> Verifique as respostas obtidas com o código abaixo e outros códigos nessa seção. <div class="sagecell-sage" id="sage-28"><script type="text/x-sage">var('t x y z');
+a=0; b=1;
+from sage.symbolic.integration.integral import definite_integral
+r=(-t, 1+2*t, t);
+P(x,y,z) = x;
+Q(x,y,z) = y;
+R(x,y,z)=z;
+r1=(r[0].diff(t),r[1].diff(t),r[2].diff(t));
+definite_integral(P(r[0],r[1],r[2])*r1[0]+Q(r[0],r[1],r[2])*r1[1]+R(r[0],r[1],r[2])*r1[2],t,a,b)
+</script></div></section></section></div></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:54-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Funções Complexas. Limite, Continuidade e Derivada</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-21.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-23.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-21.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-23.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link active">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-22"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span>
+</h2>
+<section class="subsection" id="subsection-32"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">22.1</span> <span class="title">Funções Complexas</span>
+</h3>
+<p id="p-381">Informalmente, uma <dfn class="terminology">função complexa</dfn> \(f\) é uma regra que associa a cada \(z \in D \subset \mathbb{C}\) um número complexo \(w = f(z)\text{,}\) denominado o valor de \(f\) em \(z\text{.}\)</p>
+<figure class="figure figure-like" id="figure-12"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="images/graficos_Complexos.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">22.1<span class="period">.</span></span><span class="space"> </span>Uma função complexa leva o ponto \(z \in D \subset \mathbb{C}\) no ponto \(w = f(z) \in \mathbb{C}\text{.}\)</figcaption></figure><p id="p-382">É útil separarmos a parte real e a parte imaginária de uma função complexa, como no exemplo abaixo.</p>
+<article class="example example-like" id="example-35"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-35"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">22.2</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-35"><article class="example example-like">A função complexa<div class="displaymath">
+\begin{equation*}
+w=\frac{3z-5i}{z-i},
+\end{equation*}
+</div>da variável \(z=x+iy\) pode ser separada em suas partes real e imaginária através de<div class="displaymath">
+\begin{align*}
+w=\amp \frac{3z-5i}{z-i} = \frac{3(x+iy)-5i}{(x+iy)-i} =\frac{3x+i(3y-5)}{x+i(y-1)} \\
+=\amp \frac{(3x+i(3y-5))(x-i(y-1))}{(x+i(y-1))(x-i(y-1))} \\
+=\amp \frac{3x^2-i3x(y-1)+ix(3y-5)-(3y-5)(y-1)}{x^2+(y-1)^2} \\
+=\amp \frac{3x^2-(3y-5)(y-1)}{x^2+(y-1)^2} + i \frac{-3x(y-1)+x(3y-5)}{x^2+(y-1)^2} 
+\end{align*}
+</div>Assim a parte real de \(f\) é<div class="displaymath">
+\begin{equation*}
+Re(f) = u(x,y) = \frac{3x^2-(3y-5)(y-1)}{x^2+(y-1)^2} 
+\end{equation*}
+</div>e a parte imaginária de \(w\) é<div class="displaymath">
+\begin{equation*}
+Im(f) = v(x,y) =\frac{-3x(y-1)+x(3y-5)}{x^2+(y-1)^2}  
+\end{equation*}
+</div></article></div>
+<p id="p-383">A cada função \(w=f(z)\) de uma variável complexa \(z=x+iy\) estão associadas duas funçõe reais das variáveis reais \(x\) e \(y\text{,}\) chamadas de partes real e parte imaginária de \(f(z)\text{,}\) respectivamente, \(u=u(x,y)=Re(f(z))\) e \(v=v(x,y)=Im(f(z))\text{.}\)</p>
+<p id="p-384">O código abaixo calcula a parte real e a parte imaginária de uma função complexa <div class="sagecell-sage" id="sage-83"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=z**2
+print(f)
+print('u(x,y)='+str(f.real()))
+print('v(x,y)='+str(f.imag()))
+</script></div></p>
+<p id="p-385">Conjuntos de números complexos definem subconjuntos do plano complexo. Então o domínio e o contra-domínio têm, tipicamente, dimensão dois. Assim precisaríamos de 4 dimensões para plotar uma função complexa. Uma maneira de lidar com isso é utilizarmos cores para representar o argumento, \(arg(f(z))\text{,}\) e o brilho para representar o módulo, \(|z|\text{,}\) da função complexa, respectivamente.</p>
+<p id="p-386">O código realiza o plot de uma função complexa <div class="sagecell-sage" id="sage-84"><script type="text/x-sage">f(z) = e**z
+complex_plot(f, (-30, 30), (-30, 30))
+</script></div></p>
+<p id="p-387">Também podemos plotar as partes real <div class="sagecell-sage" id="sage-85"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=e**z
+plot3d(f.real(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p>
+<p id="p-388">e imaginária da função complexa separadamente <div class="sagecell-sage" id="sage-86"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=e**z
+plot3d(f.imag(),(x,-10,1.5),(y,-10,10), frame=True)
+</script></div></p></section><section class="subsection" id="subsection-33"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">22.2</span> <span class="title">Limite e continuidade</span>
+</h3>
+<article class="definition definition-like" id="definition-25"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">22.3</span><span class="period">.</span>
+</h6>
+<p id="p-389">Seja \(f:D \subset \mathbb{C} \to \mathbb{C}\text{,}\) onde \(D\) é um conjunto aberto e \(z_0 \in D\text{.}\) Dizemos que \(f\) tem <dfn class="terminology">limite</dfn> \(L \in \mathbb{C}\) quando \(z\) tende a \(z_0\) se, dado qualquer \(\varepsilon &gt; 0\text{,}\) existe \(\delta &gt; 0\) tal que</p>
+<div class="displaymath">
+\begin{equation*}
+z \in D, \,\,\, 0 &lt; |z -z_0| &lt; \delta \,\, \Longrightarrow \,\, |f(z)-L| &lt; \varepsilon.
+\end{equation*}
+</div></article><p id="p-390">Código ilustrando o conceito de limite <div class="sagecell-sage" id="sage-87"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=z**2/5+0.1*i
+z_0=vector([0.5,0.3])
+z_D = vector([0.7, 0.1])
+epsilon=0.5
+delta=2*epsilon*z_0.norm()
+p=circle(z_0, epsilon, color='green',linestyle="--")
+p+=point(z_0, color='green')
+p+=text('z_0', (z_0[0],z_0[1]-0.05), color='green')
+p+=point(z_D, color='black')
+p+=text('z', (z_D[0],z_D[1]-0.05), color='black')
+p+=list_plot((z_0,z_0+vector([epsilon,0])), plotjoined=True, color='green',linestyle="--")
+show(p)
+L=vector([f(x=z_0[0],y=z_0[1]).real(),f(x=z_0[0],y=z_0[1]).imag()])
+f_z=vector([f(x=z_D[0],y=z_D[1]).real(),f(x=z_D[0],y=z_D[1]).imag()])
+q=circle(L, delta, color='blue',linestyle="--")
+q+=point(L, color='blue')
+q+=list_plot((L,L+vector([delta,0])), plotjoined=True, color='blue',linestyle="--")
+q+=text('L', (L[0],L[1]-0.05), color='blue')
+q+=point((f_z[0],f_z[1]), color='black')
+q+=text('f(z)', (f_z[0],f_z[1]-0.05), color='black')
+q
+</script></div></p></section><section class="subsection" id="subsection-34"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">22.3</span> <span class="title">Derivadas</span>
+</h3>
+<article class="definition definition-like" id="definition-26"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">22.4</span><span class="period">.</span>
+</h6>
+<p id="p-391">Seja \(f:D \subset \mathbb{C} \to \mathbb{C}\text{,}\) onde \(D\) é um conjunto aberto e \(z \in D\text{.}\) Dizemos que \(f\) é <dfn class="terminology">derivável</dfn> (ou <dfn class="terminology">analítica</dfn>, ou <dfn class="terminology">holomorfa</dfn>) no ponto \(z\) se existe o limite</p>
+<div class="displaymath">
+\begin{equation*}
+\lim\limits_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}.
+\end{equation*}
+</div>
+<p class="continuation">Se esse limite existe para todo \(z \in D\text{,}\) então ele define uma nova função, chamada de <dfn class="terminology">derivada</dfn> de \(f\) e denotada \(f'(z)\text{.}\) Assim</p>
+<div class="displaymath">
+\begin{equation*}
+f'(z)=\lim\limits_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}.
+\end{equation*}
+</div></article><p id="p-392">Código ilustrando o conceito de derivada <div class="sagecell-sage" id="sage-88"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=z**2/5
+z_0=vector([0.5,0.3])
+Delta_z=vector([0.2, -0.1]) # Tente diversos vetores
+#pequenos para Delta_z e veja como a aproximação da derivada muda pouco
+z_D = z_0+Delta_z
+deriv=(f(x=z_D[0],y=z_D[1])-f(x=z_0[0],y=z_0[1]))/(Delta_z[0]+i*Delta_z[1])
+p=point(z_0, color='black', xmin=-1,xmax=1, ymin=0,ymax=1)
+p+=text('z', (z_0[0],z_0[1]-0.01), color='black')
+p+=point(z_D, color='black')
+p+=text('Delta z', (z_D[0],z_D[1]-0.01), color='black')
+p+=arrow(z_0,z_0+vector([deriv.real(),deriv.imag()]))
+p
+</script></div></p>
+<article class="remark remark-like" id="remark-50"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">22.5</span><span class="period">.</span>
+</h6>O limite não pode depender da direção pela qual \(\Delta z\) tende a zero.</article><p id="p-393">Considerando as derivadas em direções distintas, obtemos uma relação bem particular <a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-42" id="fn-42"><sup> 1 </sup></a>. Para que uma função complexa seja derivável é necessário que suas partes real e imaginária satisfaçam a relação de Cauchy-Riemann.</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-42"><div class="fn">Justificativa ainda não desenvolvida aqui.</div></div>
+<article class="remark remark-like" id="remark-51"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">22.6</span><span class="period">.</span><span class="space"> </span><span class="title">Equações de Cauchy-Riemann.</span>
+</h6>
+<div class="displaymath">
+\begin{equation*}
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \,\,\,\, \frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}.
+\end{equation*}
+</div></article><p id="p-394">A derivada de uma função complexa \(f(z)=u(x,y)+iv(x,y)\text{,}\) da variável \(z=x+iy\text{,}\) pode ser calculada por</p>
+<div class="displaymath">
+\begin{equation*}
+f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}
+\end{equation*}
+</div>
+<p id="p-395">O código abaixo permite verificarmos a validade das equações de Cauchy-Riemann para alguma função complexa \(f\text{.}\) <div class="sagecell-sage" id="sage-89"><script type="text/x-sage">var('x y')
+assume(x,'real')
+assume(y,'real')
+z=x+i*y
+f=z**2
+u=f.real()
+v=f.imag()
+Du_x= diff(u, x)
+Dv_y = diff(v,y)
+print('du/dx ='+str(Du_x))
+print('dv/dy ='+str(Dv_y))
+Du_y= diff(u,y)
+Dv_x = diff(v,x)
+print('dv/dx ='+str(Dv_x))
+print('-du/dy ='+str(-Du_y))
+</script></div></p>
+<article class="theorem theorem-like" id="Cauchy-Riemann"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">22.7</span><span class="period">.</span><span class="space"> </span><span class="title">Equações de Cauchy-Riemann.</span>
+</h6>
+<p id="p-396">Se duas funções contínuas e de valores reais \(u( x, y) \) e \(v( x, y)\) de duas variáveis reais \(x\) e \(y\) tiverem derivadas parciais (de primeira ordem) contínuas que satisfazem às equações de Cauchy-Riemann em algum domínio \(D\text{,}\) então a função complexa \(ƒ( z) = u( x, y) + iv( x, y)\) é analítica em \(D\text{.}\)</p></article><article class="hiddenproof" id="proof-31"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-31"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-31"><article class="hiddenproof">Ainda não implementada.</article></div>
+<article class="exercise exercise-like" id="exercise-58"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-58"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">22.8</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-58"><article class="exercise exercise-like"><p id="p-397">Determine o domínio onde as funções da variável complexa \(z=x+iy\) estão definidas, verifique se elas são deriváveis nesse domínio e escreva as derivadas em caso afirmativo:</p>
+<ol class="decimal">
+<li id="li-112"><p id="p-derived-li-112">\(f(z)=\frac{3}{2-z^2}\text{,}\)</p></li>
+<li id="li-113"><p id="p-derived-li-113">\(f(z)=\bar{z}\text{,}\)</p></li>
+<li id="li-114"><p id="p-derived-li-114">\(f(z)=e^x\cos(y) + ie^x\sin(y)\text{,}\)</p></li>
+<li id="li-115"><p id="p-derived-li-115">\(f(z)=e^x\cos(y) - ie^x\sin(y)\text{,}\)</p></li>
+<li id="li-116"><p id="p-derived-li-116">\(f(z)=x^2+y^2\text{,}\)</p></li>
+<li id="li-117"><p id="p-derived-li-117">\(f(z)=x^2-y^2+i2xy\text{.}\)</p></li>
+</ol>
+<p class="continuation">As respostas foram inesperadas? Justifique-as.</p></article></div></section></section></div></main>
+</div>
+</body>
+</html>

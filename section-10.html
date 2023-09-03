@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:53-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Superfícies Parametrizadas e suas Áreas</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-9.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-11.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-9.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-11.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link active"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-10"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span>
+</h2>
+<article class="definition definition-like" id="definition-15"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">10.1</span><span class="period">.</span>
+</h6>
+<p id="p-212">sejam \(D \subset \mathbb{R}^2\) uma região do plano e \(\vec{r}: D \to \mathbb{R}^3\text{,}\)</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}(u,v) = x(u,v)\vec{i}+y(u,v)\vec{j}+z(u,v)\vec{k},
+\end{equation*}
+</div>
+<p class="continuation">uma função contínua a valores vetoriais. O conjunto \(S\) dos pontos \((x,y,z) \in \mathbb{R}^3\text{,}\) tais que</p>
+<div class="displaymath">
+\begin{equation*}
+x = x(u,v), \,\,\, y = y(u,v), \,\,\, z= z(u,v),
+\end{equation*}
+</div>
+<p class="continuation">com \((u,v) \in D,\) é denominada <dfn class="terminology">superfície parametrizada</dfn><a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-24" id="fn-24"><sup> 1 </sup></a> \(S\text{.}\) As equações acima são chamadas de <dfn class="terminology">equações paramétricas</dfn> de \(S\text{.}\)</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-24"><div class="fn">Essa definição permite ainda vários casos degenerados e que não consideramos, usualmente, como superfícies por (exemplo um ponto). Existem algumas definições distintas mais precisas, que são utilizadas de acordo com o contexto desejado, mas que são muito elaboradas para essa investigação inicial.</div></div></article><figure class="figure figure-like" id="figure-7"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="images/superficie.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">10.2<span class="period">.</span></span><span class="space"> </span>A superfícies \(S\) parametrizada por \(\vec{r}(u,v)\text{.}\)</figcaption></figure><div class="sagecell-sage" id="sage-47"><script type="text/x-sage">from sage.plot.plot3d.parametric_surface import ParametricSurface
+def f(u,v): return u+v, sin(u)*sin(v), u*v
+#def f(u,v): return (2+sin(v))*cos(u), (2+sin(v))*sin(u), u+cos(v)
+ParametricSurface(f, (srange(0,15,0.1), srange(0,6.35,0.1)))
+</script></div>
+<p id="p-213">A parametrização da superfície é uma função de duas variáveis, \(\vec{r}(u,v)\text{,}\) que não tem uma única derivada, mas tem derivadas parciais \(\vec{r}_u\) e \(\vec{r}_v\text{.}\) Para calcularmos essas derivadas parciais, tomamos uma das variáveis como constante, por exemplo \(v=v_0\) e derivamos em relação a outra variável, por exemplo \(u\text{.}\) Isso significa que estamos tomando a derivada \(\vec{r}_u\) da função de uma variável \(\vec{r}(u,v_0)\) e obtendo um vetor tangente à superfície. Tomando a outra variável como constante, obtemos outro vetor tangente. A figura abaixo ilustra dois vetores tangentes a uma superfície e o produto vetorial deles, que é perpendicular a aos dois e, portanto, perpendicular à superfície..</p>
+<figure class="figure figure-like" id="figure-8"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="images/VetoresTang.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">10.3<span class="period">.</span></span><span class="space"> </span>Dois vetores tangentes a uma superfície e produto vetorial deles.</figcaption></figure><p id="p-214">Se \(\vec{r}_u \times \vec{r}_v \) é contínua e \(\vec{r}_u \times \vec{r}_v \neq 0\)  para todo \((u,v) \in D\text{,}\) então a superfície \(S\)  dita <dfn class="terminology">lisa</dfn>. Em uma superfície lisa os vetores tangentes são linearmente independentes e podemos definir o <dfn class="terminology">plano tangente</dfn> à superfície \(S\text{,}\) em um ponto \(\vec{r}(u_0,v_0) \in S\text{,}\) como o plano que passa pelo ponto e contém os dois vetores tangentes. Assim o plano tangente tem equação vetorial</p>
+<div class="displaymath">
+\begin{equation*}
+T(a,b) = \vec{r}(u_0,v_0) + a \vec{r}_u (u_0,v_0) + b \vec{r}_v(u_0,v_0)
+\end{equation*}
+</div>
+<p class="continuation">e pode ser definido como o conjunto dos pontos \((x,y,z)\in \mathbb{R}^3\) que satisfaz a equação cartesiana</p>
+<div class="displaymath">
+\begin{equation*}
+((x,y,z)-\vec{r}(u_0,v_0))\cdot (\vec{r}_u(u_0,v_0) \times \vec{r}_v(u_0,v_0))=0,
+\end{equation*}
+</div>
+<p class="continuation">pois \(\vec{r}_u(u_0,v_0) \times \vec{r}_v(u_0,v_0)\) é perpendicular ao plano tangente no ponto \(\vec{r}(u_0,v_0)\text{.}\)</p>
+<div class="sagecell-sage" id="sage-48"><script type="text/x-sage">from sage.plot.plot3d.parametric_surface import ParametricSurface
+var('u v')
+u0=5
+v0=2
+r(u,v) = ((2+sin(v))*cos(u), (2+sin(v))*sin(u), u+cos(v))
+ru=diff(r,u)(u0,v0)
+rv=diff(r,v)(u0,v0)
+P(u,v) = (r(u0,v0)[0] + u*ru[0]+v*rv[0],r(u0,v0)[1] + u*ru[1]+v*rv[1],r(u0,v0)[2] + u*ru[2]+v*rv[2])
+parametric_plot3d(r, (u,0,15), (v,0,6.35))+parametric_plot3d(P, (u,-2,2), (v,-2,2),color='green')
+</script></div>
+<p id="p-215">O valor \(\|r_u \times r_v \|\) aproxima a área de um elemento infinitesimal da superfície e é chamado de <dfn class="terminology">elemento de área</dfn>. Isso nos motiva a definir a área de uma superfície como:</p>
+<article class="definition definition-like" id="definition-16"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">10.4</span><span class="period">.</span>
+</h6>
+<p id="p-216">Se uma superfície lisa \(S\text{,}\) parametrizada pela equação</p>
+<div class="displaymath">
+\begin{equation*}
+\vec{r}(u,v) = x(u,v)\vec{i}+y(u,v)\vec{j}+z(u,v)\vec{k}, \,\,\, (u,v) \in D,
+\end{equation*}
+</div>
+<p class="continuation">é coberta uma única vez quando \((u,v)\) percorre todos os valores de \(D\text{,}\) então a <dfn class="terminology">área da superfície</dfn> é definida como</p>
+<div class="displaymath">
+\begin{equation*}
+A(S)=\iint_D \|\vec{r}_u \times \vec{r}_v\| dA.
+\end{equation*}
+</div></article><p id="p-217">O código abaixo aproxima numericamente a área de uma superfície:</p>
+<div class="sagecell-sage" id="sage-49"><script type="text/x-sage">var('u v')
+r(u,v) = ((2+sin(v))*cos(u), (2+sin(v))*sin(u), u+cos(v))
+ru=diff(r,u)
+rv=diff(r,v)
+NORMruXrv=sqrt((ru[1]*rv[2] - ru[2]*rv[1])**2 + (ru[2]*rv[0] - ru[0]*rv[2])**2+ (ru[0]*rv[1] - ru[1]*rv[0])**2)
+from sage.ext.fast_callable import fast_callable
+NORMruXrvS = fast_callable(NORMruXrv, vars=[u, v])
+import mpmath as mp
+print(mp.quad(NORMruXrvS, [0,15], [0, 6.32]))
+</script></div>
+<article class="exercise exercise-like" id="exercise-34"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-34"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">10.5</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-34"><article class="exercise exercise-like"><p id="p-218">Dadas as parametrizações das superfícies abaixo, calcule os vetores tangente \(\vec{r}_u\) e \(\vec{r}_v\text{,}\) o vetor normal \(\vec{n} = \vec{r}_u \times \vec{r}_v\) e a área das superfícies parametrizadas por:</p>
+<ol class="decimal">
+<li id="li-43"><p id="p-derived-li-43">\(\displaystyle \vec{r}(u,v)=(u,v,u^2+v^2), \,\,\, -8\leq u \leq 8, \,\,\, -8\leq v \leq 8;\)</p></li>
+<li id="li-44"><p id="p-derived-li-44">\(\vec{r}(u,v)=(u^3,v^3,u^6+v^6), \,\,\, -2\leq u \leq 2, \,\,\, -2\leq v \leq 2;\text{;}\)</p></li>
+<li id="li-45"><p id="p-derived-li-45">\(\vec{r}(u,v)=(\mbox{cos}(u)\mbox{cos}(v),\mbox{cos}(u)\mbox{sen}(v),\mbox{sen}(u)), \,\,\, -\pi/2\leq u \leq \pi/2, \,\,\,  0\leq v \leq 2\pi\text{;}\)</p></li>
+<li id="li-46"><p id="p-derived-li-46">\(\vec{r}(u,v)=(u\mbox{cos}(v),u\mbox{sen}(v),u^2/2), \,\,\, 0\leq u \leq 2, \,\,\,  0\leq v \leq 2\pi\text{.}\)</p></li>
+</ol>
+<p class="continuation">Plote os gráficos das superfícies de planos tangentes em algum ponto utilizando o código abaixo e verifique os resultados obtidos numericamente.</p>
+<div class="hidden-sagecell-sage" id="sage-50"><script type="text/x-sage">from sage.plot.plot3d.parametric_surface import ParametricSurface
+var('u v')
+u0=5
+v0=2
+r(u,v) = ((2+sin(v))*cos(u), (2+sin(v))*sin(u), u+cos(v))
+ru=diff(r,u)(u0,v0)
+rv=diff(r,v)(u0,v0)
+P(u,v) = (r(u0,v0)[0] + u*ru[0]+v*rv[0],r(u0,v0)[1] + u*ru[1]+v*rv[1],r(u0,v0)[2] + u*ru[2]+v*rv[2])
+parametric_plot3d(r, (u,0,15), (v,0,6.35))+parametric_plot3d(p, (u,-2,2), (v,-2,2),color='green')
+</script></div></article></div></section></div></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2022-06-27T10:55:52-03:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>O Teorema de Green</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Executar (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Executar (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Ir ao conteúdo principal</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\doubler}[1]{2#1}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="Calculo_3.html"><span class="title">Cálculo 3 com Sagemath</span></a></h1>
+<p class="byline">Márcio Rostirolla Adames</p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Sumário</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="section-7.html" title="Anterior">Anterior</a><a id="upbutton" class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a id="nextbutton" class="next-button button toolbar-item" href="section-9.html" title="Próximo">Próximo</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Sumário</button><a class="previous-button toolbar-item button" href="section-7.html" title="Anterior">Anterior</a><a class="up-button button toolbar-item" href="Calculo_3.html" title="Acima">Acima</a><a class="next-button button toolbar-item" href="section-9.html" title="Próximo">Próximo</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link frontmatter"><a href="frontmatter-1.html" data-scroll="frontmatter-1"><span class="title">Pré-textual</span></a></li>
+<li class="link"><a href="section-1.html" data-scroll="section-1"><span class="codenumber">1</span> <span class="title">Funções Vetoriais e Curvas Espaciais.</span></a></li>
+<li class="link">
+<a href="section-2.html" data-scroll="section-2"><span class="codenumber">2</span> <span class="title">Derivadas e integrais de funções vetoriais.</span></a><ul>
+<li><a href="section-2.html#subsection-1" data-scroll="subsection-1">Derivadas de funções vetoriais.</a></li>
+<li><a href="section-2.html#subsection-2" data-scroll="subsection-2">Integrais de funções vetoriais.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-3.html" data-scroll="section-3"><span class="codenumber">3</span> <span class="title">Comprimento de arco. Movimento no espaço.</span></a></li>
+<li class="link">
+<a href="section-4.html" data-scroll="section-4"><span class="codenumber">4</span> <span class="title">Campos Vetoriais.</span></a><ul>
+<li><a href="section-4.html#subsection-3" data-scroll="subsection-3">Campos de força e velocidade.</a></li>
+<li><a href="section-4.html#subsection-4" data-scroll="subsection-4">Campo gradiente.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-5.html" data-scroll="section-5"><span class="codenumber">5</span> <span class="title">Integrais de funções escalares.</span></a><ul>
+<li><a href="section-5.html#subsection-5" data-scroll="subsection-5">Integral em relação ao comprimento de arco.</a></li>
+<li><a href="section-5.html#subsection-6" data-scroll="subsection-6">Outras integrais de linha.</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-6.html" data-scroll="section-6"><span class="codenumber">6</span> <span class="title">Integrais de Linha de Campos Vetoriais</span></a><ul>
+<li><a href="section-6.html#subsection-7" data-scroll="subsection-7">Trabalho e Campos de Força</a></li>
+<li><a href="section-6.html#subsection-8" data-scroll="subsection-8">Integrais de linha ao longo de uma curva</a></li>
+<li><a href="section-6.html#subsection-9" data-scroll="subsection-9">Fluxo de um campo através de uma curva fechada</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-7.html" data-scroll="section-7"><span class="codenumber">7</span> <span class="title">Teorema Fundamental para Integrais de Linha</span></a><ul>
+<li><a href="section-7.html#subsection-10" data-scroll="subsection-10">Integrais de linha de campos conservativos.</a></li>
+<li><a href="section-7.html#subsection-11" data-scroll="subsection-11">Conservação da Energia</a></li>
+</ul>
+</li>
+<li class="link active">
+<a href="section-8.html" data-scroll="section-8"><span class="codenumber">8</span> <span class="title">O Teorema de Green</span></a><ul>
+<li><a href="section-8.html#subsection-12" data-scroll="subsection-12">Curvas fechadas e o Teorema de Green.</a></li>
+<li><a href="section-8.html#subsection-13" data-scroll="subsection-13">Forma vetorial do Teorema de Green</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-9.html" data-scroll="section-9"><span class="codenumber">9</span> <span class="title">Rotacional e Divergente</span></a><ul>
+<li><a href="section-9.html#subsection-14" data-scroll="subsection-14">Introdução</a></li>
+<li><a href="section-9.html#subsection-15" data-scroll="subsection-15">O Rotacional</a></li>
+<li><a href="section-9.html#subsection-16" data-scroll="subsection-16">O Divergente</a></li>
+<li><a href="section-9.html#subsection-17" data-scroll="subsection-17">O Operador de Laplace</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-10.html" data-scroll="section-10"><span class="codenumber">10</span> <span class="title">Superfícies Parametrizadas e suas Áreas</span></a></li>
+<li class="link"><a href="section-11.html" data-scroll="section-11"><span class="codenumber">11</span> <span class="title">Integrais de Superfície de Campos Escalares</span></a></li>
+<li class="link">
+<a href="section-12.html" data-scroll="section-12"><span class="codenumber">12</span> <span class="title">Integrais de Superfície de Campos Vetoriais</span></a><ul>
+<li><a href="section-12.html#subsection-18" data-scroll="subsection-18">Superfícies orientáveis</a></li>
+<li><a href="section-12.html#subsection-19" data-scroll="subsection-19">Integrais de Campos Vetoriais</a></li>
+<li><a href="section-12.html#subsection-20" data-scroll="subsection-20">Aplicações na física</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-13.html" data-scroll="section-13"><span class="codenumber">13</span> <span class="title">O Teorema de Stokes</span></a></li>
+<li class="link"><a href="section-14.html" data-scroll="section-14"><span class="codenumber">14</span> <span class="title">O Teorema do Divergente</span></a></li>
+<li class="link">
+<a href="section-15.html" data-scroll="section-15"><span class="codenumber">15</span> <span class="title">Sequências e Séries</span></a><ul>
+<li><a href="section-15.html#subsection-21" data-scroll="subsection-21">Sequências</a></li>
+<li><a href="section-15.html#subsection-22" data-scroll="subsection-22">Séries</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-16.html" data-scroll="section-16"><span class="codenumber">16</span> <span class="title">O Teste da Integral e os Teste de Comparação</span></a><ul>
+<li><a href="section-16.html#subsection-23" data-scroll="subsection-23">Sobre sequência e séries</a></li>
+<li><a href="section-16.html#subsection-24" data-scroll="subsection-24">O Teste da Integral</a></li>
+<li><a href="section-16.html#subsection-25" data-scroll="subsection-25">O Teste da Comparação</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-17.html" data-scroll="section-17"><span class="codenumber">17</span> <span class="title">Séries Alternadas e Convergência Absoluta</span></a><ul>
+<li><a href="section-17.html#subsection-26" data-scroll="subsection-26">Séries Alternadas</a></li>
+<li><a href="section-17.html#subsection-27" data-scroll="subsection-27">Convergência Absoluta</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-18.html" data-scroll="section-18"><span class="codenumber">18</span> <span class="title">Testes da Razão e da Raiz</span></a><ul>
+<li><a href="section-18.html#subsection-28" data-scroll="subsection-28">O Teste da Razão</a></li>
+<li><a href="section-18.html#subsection-29" data-scroll="subsection-29">O Teste da Raiz</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-19.html" data-scroll="section-19"><span class="codenumber">19</span> <span class="title">Série de potências</span></a></li>
+<li class="link">
+<a href="section-20.html" data-scroll="section-20"><span class="codenumber">20</span> <span class="title">Representação de Funções como Séries de Potências. Séries de Taylor</span></a><ul>
+<li><a href="section-20.html#subsection-30" data-scroll="subsection-30">Representação de Funções como Séries de Potências.</a></li>
+<li><a href="section-20.html#subsection-31" data-scroll="subsection-31">Séries de Taylor.</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-21.html" data-scroll="section-21"><span class="codenumber">21</span> <span class="title">Revisão sobre números complexos.</span></a></li>
+<li class="link">
+<a href="section-22.html" data-scroll="section-22"><span class="codenumber">22</span> <span class="title">Funções Complexas. Limite, Continuidade e Derivada</span></a><ul>
+<li><a href="section-22.html#subsection-32" data-scroll="subsection-32">Funções Complexas</a></li>
+<li><a href="section-22.html#subsection-33" data-scroll="subsection-33">Limite e continuidade</a></li>
+<li><a href="section-22.html#subsection-34" data-scroll="subsection-34">Derivadas</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="section-23.html" data-scroll="section-23"><span class="codenumber">23</span> <span class="title">Exemplos de Funções Complexas</span></a><ul>
+<li><a href="section-23.html#subsection-35" data-scroll="subsection-35">A função exponencial</a></li>
+<li><a href="section-23.html#subsection-36" data-scroll="subsection-36">Funções trigonométricas</a></li>
+<li><a href="section-23.html#subsection-37" data-scroll="subsection-37">Funções trigonométricas hiperbólicas</a></li>
+<li><a href="section-23.html#subsection-38" data-scroll="subsection-38">Função logarítmica complexa</a></li>
+</ul>
+</li>
+<li class="link"><a href="section-24.html" data-scroll="section-24"><span class="codenumber">24</span> <span class="title">Integral de Linha no plano complexo</span></a></li>
+<li class="link"><a href="section-25.html" data-scroll="section-25"><span class="codenumber">25</span> <span class="title">Teorema Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-26.html" data-scroll="section-26"><span class="codenumber">26</span> <span class="title">Fórmula Integral de Cauchy</span></a></li>
+<li class="link"><a href="section-27.html" data-scroll="section-27"><span class="codenumber">27</span> <span class="title">Fórmula Integral de Cauchy para Derivadas</span></a></li>
+</ul></nav><div class="extras"><nav><a class="pretext-link" href="https://pretextbook.org">Feito com PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="section-8"><h2 class="heading hide-type">
+<span class="type">Seção</span> <span class="codenumber">8</span> <span class="title">O Teorema de Green</span>
+</h2>
+<section class="subsection" id="subsection-12"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">8.1</span> <span class="title">Curvas fechadas e o Teorema de Green.</span>
+</h3>
+<p id="p-165">Antes de enunciarmos o Teorema de Green propriamente dito, precisamos observar  algumas propriedades das curvas planas.</p>
+<article class="definition definition-like" id="definition-13"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">8.1</span><span class="period">.</span>
+</h6>
+<p id="p-166">Seja \(C\) uma curva plana parametrizada por uma função vetorial \(\vec{r}:[a,b] \to \mathbb{R}^2\text{.}\) Dizemos que \(C\) é <dfn class="terminology">fechada</dfn> se os pontos final e inical são iguais, ou seja, \(\vec{r}(a)=\vec{r}(b)\text{.}\) Dizemos que \(C\) tem <dfn class="terminology">auto-interseção</dfn> se existem \(t_0\in (a,b)\) e \(t_1\in [a,b]\) com \(\vec{r}(t_0)=\vec{r}(t_1)\text{,}\) ou seja, a curva tem auto-interseção se a parametrização mapeia o mesmo ponto da curva duas vezes, excetuando-se o caso do ponto final ser idêntico ao ponto inicial. Por fim, dizemos que \(C\)  é <dfn class="terminology">simples</dfn> se não tem auto-interseção.</p></article><p id="p-167">Rode o código abaixo e observe as quatro curvas apresentadas. A curva azul é simples e não é fechada; a curva verde é fechada mas não é simples, a curva amarela não é fechada nem simples e a curva preta é simples e fechada.</p>
+<div class="sagecell-sage" id="sage-35"><script type="text/x-sage">t = var('t');
+r(t)=(sin(t), cos(2*t));
+u(t)=(2+sin(t), sin(2*t));
+v(t)=(sin(3*t), -2*cos(2*t)^2-1.2);
+w(t)=(2.1+cos(t)+0.2*sin(3*t), sin(t)+0.1*cos(3*t)-2.2);
+g1=parametric_plot(r(t), (t,0,6.3), axes=False)
+g2=parametric_plot(u(t), (t,0,6.3), axes=False, color='green')
+g3=parametric_plot(v(t), (t,0,6.3), axes=False, color='yellow')
+g4=parametric_plot(w(t), (t,0,6.3), axes=False, color='black')
+g1+g2+g3+g4
+</script></div>
+<article class="remark remark-like" id="remark-25"><h6 class="heading">
+<span class="type">Nota</span><span class="space"> </span><span class="codenumber">8.2</span><span class="period">.</span>
+</h6>É possivel mostrar (<dfn class="terminology">Teorema da curva de Jordan</dfn>) que um curva fechada simples \(C\) divide o plano em exatamente duas regiões, uma limitada, chamada de <dfn class="terminology">interior</dfn> de \(C\text{,}\) e outra não limitada, chamada <dfn class="terminology">exterior</dfn> de \(C\text{.}\)</article><article class="definition definition-like" id="definition-14"><h6 class="heading">
+<span class="type">Definição</span><span class="space"> </span><span class="codenumber">8.3</span><span class="period">.</span>
+</h6>
+<p id="p-168">Seja \(C\) uma curva plana <em class="alert">fechada</em>  e <em class="alert">simples</em>, parametrizada por uma função vetorial \(\vec{r}:[a,b] \to \mathbb{R}^2\text{.}\) Dizemos que \(C\) é <dfn class="terminology">orientada positivamente</dfn> (por \(\vec{r}(t)\)) se \(\vec{r}(t)\) percorre \(C\) no sentido anti-horário e que é <dfn class="terminology">orientada negativamente</dfn> se \(\vec{r}(t)\) percorre \(C\) no sentido horário.</p></article><p id="p-169">Rode o código abaixo e observe as quatro curvas apresentadas. As curvas azul e vermelha tem orientação positiva, enquanto as curvas rosa e roxa tem orientação negativa.</p>
+<div class="sagecell-sage" id="sage-36"><script type="text/x-sage">t = var('t');
+r(t)=(0.7*cos(t), 0.7*sin(t));
+u(t)=(1.7+0.7*cos(t)+0.15*sin(3*t), 0.7*sin(t)+0.07*cos(3*t));
+v(t)=(0.7*cos(t),-1.5+ 0.7*sin(t));
+w(t)=(1.7+0.7*cos(t)+0.15*sin(3*t), -1.6+0.7*sin(t)+0.07*cos(3*t));
+g1=parametric_plot(r(t), (t,0,6.3), axes=False)+arrow(r(0),r(0.1))+arrow(r(2),r(2.1)) +arrow(r(4),r(4.1))
+g3=parametric_plot(v(t), (t,0,6.3), axes=False, color='purple')+arrow(v(0),v(-0.1), color='purple')+arrow(v(2),v(1.9), color='purple') +arrow(v(4),v(3.9), color='purple')
+g2=parametric_plot(u(t), (t,0,6.3), axes=False, color='red')+arrow(u(0),u(0.1), color='red')+arrow(u(2),u(2.1), color='red')+arrow(u(4),u(4.1), color='red')
+g4=parametric_plot(w(t), (t,0,6.3), axes=False, color='pink')+arrow(w(0),w(-0.1), color='pink')+arrow(w(2),w(1.9), color='pink')+arrow(w(4),w(3.9), color='pink')
+g1+g2+g3+g4
+</script></div>
+<article class="theorem theorem-like" id="Teorema_de_Green"><h6 class="heading">
+<span class="type">Teorema</span><span class="space"> </span><span class="codenumber">8.4</span><span class="space"> </span><span class="creator">(George Green (1793 - 1841))</span><span class="period">.</span><span class="space"> </span><span class="title">Teorema de Green.</span>
+</h6>
+<p id="p-170">Seja \(C \) uma curva plana fechada, simples, regular (lisa) por trechos, orientada positivamente e seja \(D\) a região limitada por \(C\text{.}\) Se \(P\) e \(Q\) são funções reais de duas variáveis de classe \(C^1\) em uma região aberta que contenha \(D\text{,}\) então</p>
+<div class="displaymath">
+\begin{equation*}
+\oint_C P \, dx+ Q \, dy = \iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \, dA.
+\end{equation*}
+</div></article><article class="hiddenproof" id="proof-11"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-11"><h6 class="heading"><span class="type">Demonstração<span class="period">.</span></span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-11"><article class="hiddenproof"><p id="p-171">Para o caso particular em que \(C\) é o retângulo definido pelos pontos \((x_0,y_0),(x_1,y_0),(x_1,y_1)\) e \((x_0,y_1)\text{,}\) com \(x_1 &gt; x_0\) e \(y_1 &gt; y_0\text{,}\) podemos separar \(C\) nos segmentos \(C_1\text{,}\) \(C_2\text{,}\) \(C_3\) e \(C_4\text{,}\) parametrizados por \(r_1(t) = (t, y_0)\text{,}\) \(t \in [x_0,x_1]\text{;}\) \(r_2(t) = (x_1, t)\text{,}\) \(t \in [y_0,y_1]\text{;}\) \(r_3(t) = (x_1+x_0-t, y_1)\text{,}\) \(t \in [x_0 ,x_1]\) e \(r_4(t) = (x_0, y_1 + y_0 -t)\text{,}\) \(t \in [y_0,y_1]\text{.}\) Então podemos calcular:</p>
+<div class="displaymath">
+\begin{align*}
+\oint_C P \, dx+ Q \, dy=  \amp \int_{C_1} P \, dx+ Q \, dy + \int_{C_2} P \, dx+ Q \, dy\\
+\amp + \int_{C_3} P \, dx+ Q \, dy + \int_{C_4} P \, dx+ Q \, dy \\
+= \amp \int_{x_0}^{x_1} P(t,y_0) dt + \int_{y_0}^{y_1} Q(x_1, t) dt \\
+\amp - \int_{x_0}^{x_1} P(x_1+x_0-t,y_1) dt - \int_{y_0}^{y_1} Q(x_0, y_1+y_0-t) dt. 
+\end{align*}
+</div>
+<p class="continuation">Agora, por outro lado, calculamos</p>
+<div class="displaymath">
+\begin{align*}
+\iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \, dA = \amp \iint_D \frac{\partial Q}{\partial x} dA - \iint_D \frac{\partial P}{\partial y} \, dA\\
+= \amp \int_{y_0}^{y_1} \int_{x_0}^{x_1} \frac{\partial Q}{\partial x} dx \, dy - \int_{x_0}^{x_1}\int_{y_0}^{y_1} \frac{\partial P}{\partial y} \, dy \, dx\\
+= \amp \int_{y_0}^{y_1} Q(x_1,y) - Q(x_0,y) \, dy - \int_{x_0}^{x_1} P(x,y_1) - P(x,y_0) dx \\
+= \amp \int_{x_0}^{x_1} P(x,y_0) dx + \int_{y_0}^{y_1} Q(x_1, y) dy \\
+\amp - \int_{x_0}^{x_1} P(x,y_1) dx - \int_{y_0}^{y_1} Q(x_0, y) dy, 
+\end{align*}
+</div>
+<p class="continuation">que podem ser transformadas nas integrais anteriores fazendo as mudanças de variáveis \(x = t\text{,}\) \(y = t\text{,}\) \(x = x_1+x_0 - t\) e \(y = y_1+y_0 - t\text{,}\) respectivamente.</p>
+<p id="p-172">Para o caso geral, podemos aproximar a região limitada por \(C\) por uma região formada pela união de vários retângulos da forma acima, lembrando que as integrais dos lados sobrepostos se cancelam devido à orientação contrária.</p></article></div>
+<article class="example example-like" id="example-15"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-15"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">8.5</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-15"><article class="example example-like"><p id="p-173">O Teorema de  Green pode facilitar o cálculo de algumas integrais de linha.</p>
+<p id="p-174">Seja \(C\) o triângulo definido pelos pontos \((0,0)\text{,}\) \((1,0)\) e \((0,1)\text{,}\) com orientação induzida pela ordem dos pontos, conforme ilustrado na figura.</p>
+<figure class="figure figure-like" id="figure-6"><div class="image-box" style="width: 30%; margin-left: 35%; margin-right: 35%;"><img src="images/Triangulo_orientado.png" class="contained" alt=""></div>
+<figcaption><span class="type">Figura</span><span class="space"> </span><span class="codenumber">8.6<span class="period">.</span></span><span class="space"> </span>O triângulo orientado definido pelospontos \((0,0)\text{,}\) \((1,0)\) e \((0,1)\text{.}\)</figcaption></figure><p id="p-175">Para esse exemplo é mais fácil  utilizar o Teorema de Green e calcular uma integral dupla do que parametrizar a curva e calcular as três integrais resultantes.</p>
+<div class="displaymath">
+\begin{align*}
+\oint_C x^3\, dx + xy^2 \, dy = \amp \iint_D y^2 \, dA = \int_0^1\int_0^{1-y} y^2 \, dx \, dy \\
+=\amp \int_0^1 y^2 (1-y) \, dy = \frac{1}{3} - \frac{1}{4} = \frac{1}{12}.
+\end{align*}
+</div></article></div>
+<article class="example example-like" id="example-16"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-16"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">8.7</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-16"><article class="example example-like"><p id="p-176">O Teorema de  Green pode facilitar o cálculo de algumas integrais de linha com integrandos não triviais.</p>
+<p id="p-177">Seja \(C\) o círculo parametrizado<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-16" id="fn-16"><sup> 1 </sup></a> por \(r(t)=(sin(t),cos(t)) \text{.}\)</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-16"><div class="fn">Observe que a orientação é negativa.</div></div>
+<div class="displaymath">
+\begin{align*}
+\oint_C (3y - e^{\mbox{sen} (x)}) dx + (7x + \sqrt{y^4+1}) \, dy = -\amp \iint_D 7-3 \, dA  \\
+=\amp - \int_0^{2\pi}\int_0^{1} 4 r \, dr \, d\theta = - 4\pi.
+\end{align*}
+</div></article></div>
+<article class="example example-like" id="example-17"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-17"><h6 class="heading">
+<span class="type">Exemplo</span><span class="space"> </span><span class="codenumber">8.8</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-17"><article class="example example-like"><p id="p-178">Em alguns casos pode ser vantajoso utilizar o Teorema de Green para trocar uma integral dupla por uma integral de linha mais simples.</p>
+<p id="p-179">Vamos calcular a área da elipse \(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\text{.}\) Pela definição precisaríamos calcular uma integral dupla, que poderia ser parametrizada<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-17" id="fn-17"><sup> 2 </sup></a> por \(-b \leq y \leq b\text{,}\) \(-a\sqrt{1-\frac{y^2}{b^2}} \leq x \leq a\sqrt{1-\frac{y^2}{b^2}}\text{,}\)</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-17"><div class="fn">Assumindo, sem perda de generalidade, que \(a,b&gt;0\text{.}\)</div></div>
+<div class="displaymath">
+\begin{equation*}
+A = \iint_D 1 \, dydx = \int_{-b}^b\int_{-\frac{a}{b}\sqrt{b^2-y^2}}^{\frac{a}{b}\sqrt{b^2-y^2}}1 \, dA = \int_{-b}^b 2\frac{a}{b}\sqrt{b^2-y^2}\, dy
+\end{equation*}
+</div>
+<p id="p-180">cuja longa solução pode ser obtida com uma substituição trigonométrica. Uma solução mais elegante pode ser obtida utilizando o Teorema de Green e um par de funções que satisfaça \(\partial Q/\partial x - \partial P/\partial y =1\) em uma região aberta e simplesmente conexa<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-18" id="fn-18"><sup> 3 </sup></a> contendo a elipse, por exemplo \(Q(x,y)=x\text{,}\)  \(P(x,y)=0\text{.}\) Assim, parametrizando a elipse por \(\vec{r}(t) = a \cos (t) \mathbf{i} + b \mbox{sen }(t) \mathbf{j}\text{,}\) \(t \in [0, 2\pi]\text{,}\) obtemos</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-18"><div class="fn">Sem furos.</div></div>
+<div class="displaymath">
+\begin{gather*}
+A = \iint_ 1 \, dA = \oint_C Q \, dy = \int_0^{2\pi} ab \cos^2(t) dt= ab\pi.
+\end{gather*}
+</div></article></div>
+<em class="alert">Clique e resolva os exercícios abaixo antes de prosseguir.</em><article class="exercise exercise-like" id="exercise-28"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-28"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">8.9</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-28"><article class="exercise exercise-like"><p id="p-181">Seja \(C\) o triângulo orientado definido pelos pontos \((1, 7)\text{,}\) \((9, 7)\) e \((9, 12)\text{,}\) com orientação positiva. Calcule, utilizando o Teorema de Green,</p>
+<div class="displaymath">
+\begin{equation*}
+\oint_C (3xy- \tan(x/17)) \, dx + (\cos (x) - \sqrt{6 - y^3}) dy.
+\end{equation*}
+</div></article></div>
+<article class="exercise exercise-like" id="exercise-29"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-29"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">8.10</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-29"><article class="exercise exercise-like"><p id="p-182">Seja \(C\) a curva definida pelo arco da parábola\(y=x^2\text{,}\) \(-2 \leq x \leq 2\text{,}\) e pelos segmentos de \((-2,4)\) à \((-2,0)\text{,}\) de \((-2,0)\) à \((2,0)\) e de \((2,0)\) à \((2,4)\text{,}\) com orientação positiva. Calcule, utilizando o Teorema de Green,</p>
+<div class="displaymath">
+\begin{equation*}
+\oint_C 3x^2y \, dx + 7x^3 dy.
+\end{equation*}
+</div></article></div>
+<article class="exercise exercise-like" id="exercise-30"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-30"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">8.11</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-30"><article class="exercise exercise-like"><p id="p-183">Seja \(C\) a hipociloide  parametrizada por \(\vec{r}(t)=(\mbox{cos}^3(t),\mbox{sen}^3(t))\text{,}\) \(t \in [0, 2\pi)\text{.}\) Utilize o teorema de Green para encontrar a área da região limitada por \(C\text{.}\)</p></article></div>
+<div class="sagecell-sage" id="sage-37"><script type="text/x-sage">var('t');
+r(t)=((cos(t))^3, (sin(t))^3)
+S = parametric_plot(r(t), (t,0,2*pi))
+S
+</script></div>
+<article class="exercise exercise-like" id="exercise-31"><a data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exercise-31"><h6 class="heading">
+<span class="type">Exercício</span><span class="space"> </span><span class="codenumber">8.12</span><span class="period">.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-exercise-31"><article class="exercise exercise-like"><p id="p-184">O centro de massa de uma placa plana ocupando uma região \(D\text{,}\) de área \(A\) e com densidade constante, pode ser calculada por</p>
+<div class="displaymath">
+\begin{align*}
+\amp \bar{x}=\frac{1}{A}\iint_D x dA\\
+\amp \bar{y}=\frac{1}{A}\iint_D y dA
+\end{align*}
+</div>
+<p id="p-185">Utilize o teorema de Green para escrever uma expressão para o centro de massa da região limitada pela cardióide \(\vec{r}(t)=(\mbox{cos}(t)-\mbox{cos}^2(t),\mbox{sen}(t)-\mbox{cos}(t)\mbox{sen}(t))\text{,}\) \(t \in [0, 2\pi)\text{.}\)</p>
+<p id="p-186">Depois, escreva um código em Sagemath para calcular a integral resultante.</p></article></div>
+<div class="sagecell-sage" id="sage-38"><script type="text/x-sage">var('t');
+r(t)=(cos(t)-(cos(t))^2, sin(t)-cos(t)*sin(t))
+S = parametric_plot(r(t), (t,0,2*pi))
+S
+</script></div>
+<div class="sagecell-sage" id="sage-39"><script type="text/x-sage">
+</script></div></section><section class="subsection" id="subsection-13"><h3 class="heading hide-type">
+<span class="type">Subseção</span> <span class="codenumber">8.2</span> <span class="title">Forma vetorial do Teorema de Green</span>
+</h3>
+<p id="p-187">As integrais presentes no Teorema de Green aparecem naturalmente no contexto do cálculo vetorial. Note que se \(\vec{F} (x,y) = P(x,y) \mathbf{i} +  Q(x,y) \mathbf{j} \) e \(C\) é uma curva fechada<a data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-19" id="fn-19"><sup> 4 </sup></a> parametrizada por \(\vec{r}(t)=(x(t),y(t))\) (com orientação positiva), temos</p>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-19"><div class="fn">Nas condições do Teorema de Green.</div></div>
+<div class="displaymath">
+\begin{equation*}
+\oint_C\vec{F} \cdot d \vec{r} = \int P(x(t),y(t))x'(t) + Q(x(t),y(t))y'(t) dt = \oint_C P \, dx + Q \, dy.
+\end{equation*}
+</div>
+<section class="subsubsection" id="subsubsection-1"><h4 class="heading hide-type">
+<span class="type">Subsubseção</span> <span class="codenumber">8.2.1</span> <span class="title">Rotacional</span>
+</h4>
+<p id="p-188">O Teorema de Green ainda está relacionado, como veremos a seguir, com o conceito de rotacional na física, que pode ser entendido como uma medida de quanto um campo vetorial faz partículas pontuais girarem.</p>
+<div class="displaymath">
+\begin{equation*}
+\mathbf{rot} \vec{F} = \left(  \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) \mathbf{k}
+\end{equation*}
+</div>
+<p class="continuation">e chamamos de <dfn class="terminology">rotacional</dfn> a esse campo perpendicular ao plano, de modo que</p>
+<div class="displaymath">
+\begin{equation*}
+\iint_D \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} dA = \iint_D \mathbf{rot} \vec{F} \cdot \mathbf{k} dA.
+\end{equation*}
+</div>
+<p class="continuation"><div class="sagecell-sage" id="sage-40"><script type="text/x-sage">x,y= var('x,y')
+plot_vector_field((y,0), (x,0,3), (y,0,3))+circle((1,2),0.3)
+</script></div> Desse modo podemos escrever o Teorema de Green como:</p>
+<div class="displaymath">
+\begin{equation}
+\oint_C\vec{F} \cdot d \vec{r} = \iint_D \mathbf{rot} \vec{F} \cdot \mathbf{k} dA\tag{8.1}
+\end{equation}
+</div>
+<p class="continuation"><div class="sagecell-sage" id="sage-41"><script type="text/x-sage">var('x y z')
+F=(y^2, 0 ,0)
+curl=(0,0,diff(F[0],y,1)-diff(F[1],x,1))
+V=plot_vector_field3d(F, (x,0,3), (y,0,3), (z,0,0.1),plot_points=7)
+W=plot_vector_field3d(curl, (x,0,3), (y,0,3), (z,0,0.1),plot_points=7)
+V+W
+</script></div></p></section><section class="subsubsection" id="subsubsection-2"><h4 class="heading hide-type">
+<span class="type">Subsubseção</span> <span class="codenumber">8.2.2</span> <span class="title">Fluxo</span>
+</h4>
+<p id="p-189">Para algumas aplicações na física temos interesse em calcular o <dfn class="terminology">fluxo</dfn>  de um campo vetorial através de uma curva. O fluxo é a integral do campo em relação ao vetor normal \(\vec{n}(t)\) e é definido como a integral de linha do produto interno do campo com o vetor normal em relação ao comprimento de arco. Assim, utilizando o fato que o vetor normal externo à curva parametrizada por \(r(t)= (x(t), y(t))\) e orientada positivamente é \(\vec{n} = \frac{1}{\|r'(t)\|} (y'(t), -x'(t))\text{,}\) temos:</p>
+<div class="displaymath">
+\begin{equation*}
+\oint_C\vec{F} \cdot \vec{n} ds= \int_a^b P(x(t),y(t)) y'(t) - Q(x(t),y(t)) x'(t)\, dt = \oint_C P \, dy - Q \,dx.
+\end{equation*}
+</div>
+<p class="continuation">Então o Teorema de Green implica em</p>
+<div class="displaymath">
+\begin{equation}
+\oint_C\vec{F} \cdot \vec{n} ds= \oint_C - Q \,dx + P \, dy = \iint_D  \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} \, dA = \iint_D \mathbf{div} \vec{F}(x,y) \, dA,\tag{8.2}
+\end{equation}
+</div>
+<p class="continuation">onde a quantidade \(\mathbf{div} \vec{F}(x,y) := \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y}\) é chamada de <dfn class="terminology">divergente</dfn> de \(\vec{F}\text{.}\) <div class="sagecell-sage" id="sage-42"><script type="text/x-sage">x,y= var('x,y')
+A=plot_vector_field((y,x), (x,0,8), (y,0,8))
+B=line([(1,1),(2,1),(2,2),(1,2),(1,1)])
+C=arrow((2,1.5),(3,1.5),color=hue(0.6),width=0.4)
+D=arrow((1,1.5),(0,1.5),color=hue(0.6),width=0.4)
+E=arrow((1.5,2),(1.5,3),color=hue(0.6),width=0.4)
+F=arrow((1.5,1),(1.5,0),color=hue(0.6),width=0.4)
+G=point((1.5,1.5))+text('(x,y)',(1.5,1.5))+text(r"$ \epsilon/2 $",(1.75,0.75))+text(r"$ \epsilon/2 $",(2.25,1.75))
+A+B+C+D+E+F+G
+</script></div> Supondo que o campo \(F(x,y)=P(x,y)\vec{i}+Q(x,y)\vec{j}\) é  aproximadamente constante nas laterais do quadrado e representa a velocidade de um fluído em determinado instante, temos que a variação na densidade pode ser aproximada pelo quociente do fluxo (que mede quanto "sai" menos o que "entra" na região ) pela área total da figura</p>
+<div class="displaymath">
+\begin{align*}
+\amp\frac{1}{\epsilon^2} \epsilon(P(x+\epsilon/2,y) - P(x-\epsilon/2,y) + Q(x,y+\epsilon/2) - Q(x,y-\epsilon/2))\\
+\amp=\frac{P(x+\epsilon/2,y) - P(x-\epsilon/2,y)}{\epsilon} + \frac{Q(x,y+\epsilon/2) - Q(x,y-\epsilon/2)}{\epsilon}\\
+\amp \rightarrow \frac{ \partial P}{\partial x}(x,y) + \frac{ \partial Q}{\partial y}(x,y)
+\end{align*}
+</div></section></section></section></div></main>
+</div>
+</body>
+</html>
